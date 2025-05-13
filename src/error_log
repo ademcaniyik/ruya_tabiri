@@ -1,0 +1,337 @@
+[26-Apr-2025 13:45:13 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:45:13 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:13 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:45 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:45:45 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:45 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:46 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:45:46 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:46 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:45:46 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:46 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:45:46 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:46 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:45:46 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:47 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:45:47 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:47 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:47 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:45:47 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:47 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:47 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:45:47 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:47 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:48 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:45:48 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:45:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:01 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:46:01 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:01 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:02 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:46:02 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:02 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:02 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:46:02 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:02 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:03 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:46:03 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:03 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:03 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:46:03 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:03 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:03 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:46:03 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:03 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:03 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:46:03 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:03 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:04 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:46:04 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function close() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 8
+[26-Apr-2025 13:46:52 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:46:52 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:46:52 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:46:54 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:46:54 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:46:54 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:16 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:16 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:16 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:16 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:16 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:16 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:17 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:17 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:17 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:18 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:18 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:19 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:19 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:19 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:19 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:47:19 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:47:19 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:12 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:48:12 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:12 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:14 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:48:14 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:14 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:48:14 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:14 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:48:14 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:15 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:48:15 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:15 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:15 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:48:15 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:15 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:16 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:48:16 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:16 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:18 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:48:18 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:18 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:23 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:48:23 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:23 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:23 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:48:23 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:23 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:23 UTC] PHP Warning:  Undefined variable $connect in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 13:48:23 UTC] PHP Warning:  Undefined variable $e in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 13:48:23 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMessage() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 7
+[26-Apr-2025 14:11:47 UTC] PHP Warning:  include_once(config/config.php): Failed to open stream: No such file or directory in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 14:11:47 UTC] PHP Warning:  include_once(): Failed opening 'config/config.php' for inclusion (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 14:11:47 UTC] PHP Warning:  Undefined variable $conn in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 12
+[26-Apr-2025 14:11:47 UTC] PHP Fatal error:  Uncaught Error: Call to a member function real_escape_string() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 12
+[26-Apr-2025 14:11:59 UTC] PHP Warning:  include_once(config/config.php): Failed to open stream: No such file or directory in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 14:11:59 UTC] PHP Warning:  include_once(): Failed opening 'config/config.php' for inclusion (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 14:11:59 UTC] PHP Warning:  Undefined variable $conn in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 12
+[26-Apr-2025 14:11:59 UTC] PHP Fatal error:  Uncaught Error: Call to a member function real_escape_string() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 12
+[26-Apr-2025 14:12:48 UTC] PHP Warning:  include_once(config/config.php): Failed to open stream: No such file or directory in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 14:12:48 UTC] PHP Warning:  include_once(): Failed opening 'config/config.php' for inclusion (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 14:12:48 UTC] PHP Warning:  Undefined variable $conn in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 12
+[26-Apr-2025 14:12:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function real_escape_string() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 12
+[26-Apr-2025 14:14:29 UTC] PHP Warning:  include_once(config/config.php): Failed to open stream: No such file or directory in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 14:14:29 UTC] PHP Warning:  include_once(): Failed opening 'config/config.php' for inclusion (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 3
+[26-Apr-2025 14:14:29 UTC] PHP Warning:  Undefined variable $conn in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 12
+[26-Apr-2025 14:14:29 UTC] PHP Fatal error:  Uncaught Error: Call to a member function real_escape_string() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 12
+[26-Apr-2025 14:15:17 UTC] PHP Warning:  include_once(config/config.php): Failed to open stream: No such file or directory in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 6
+[26-Apr-2025 14:15:17 UTC] PHP Warning:  include_once(): Failed opening 'config/config.php' for inclusion (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 6
+[26-Apr-2025 14:15:17 UTC] PHP Warning:  Undefined variable $conn in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 15
+[26-Apr-2025 14:15:17 UTC] PHP Fatal error:  Uncaught Error: Call to a member function real_escape_string() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 15
+[01-May-2025 11:49:08 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'token' in 'SELECT' in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:33
+Stack trace:
+#0 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php(33): mysqli->query()
+#1 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 33
+[01-May-2025 11:50:10 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'token' in 'SELECT' in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:33
+Stack trace:
+#0 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php(33): mysqli->query()
+#1 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 33
+[01-May-2025 11:51:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'token' in 'SELECT' in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:33
+Stack trace:
+#0 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php(33): mysqli->query()
+#1 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 33
+[01-May-2025 11:56:20 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'token' in 'SELECT' in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:33
+Stack trace:
+#0 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php(33): mysqli->query()
+#1 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 33
+[01-May-2025 11:56:34 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'token' in 'SELECT' in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:33
+Stack trace:
+#0 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php(33): mysqli->query()
+#1 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 33
+[01-May-2025 11:58:08 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'token' in 'SELECT' in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:33
+Stack trace:
+#0 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php(33): mysqli->query()
+#1 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 33
+[01-May-2025 12:01:00 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'token' in 'SELECT' in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php:37
+Stack trace:
+#0 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php(37): mysqli->query()
+#1 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 37
+[09-May-2025 17:08:59 UTC] PHP Warning:  Undefined array key "userId" in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/Token.php on line 21
+[09-May-2025 19:34:36 UTC] PHP Parse error:  syntax error, unexpected token "{" in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 40
+[09-May-2025 19:34:44 UTC] PHP Parse error:  syntax error, unexpected token "{" in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/UserLogin.php on line 40

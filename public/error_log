@@ -1,0 +1,33 @@
+[22-Mar-2025 20:20:28 UTC] PHP Warning:  Undefined array key "choices" in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[22-Mar-2025 20:20:28 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[22-Mar-2025 20:20:28 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[22-Mar-2025 20:20:28 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[22-Mar-2025 20:21:07 UTC] PHP Warning:  Undefined array key "choices" in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[22-Mar-2025 20:21:07 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[22-Mar-2025 20:21:07 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[22-Mar-2025 20:21:07 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[22-Mar-2025 21:08:01 UTC] PHP Warning:  Undefined array key "choices" in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[22-Mar-2025 21:08:01 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[22-Mar-2025 21:08:01 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[22-Mar-2025 21:08:01 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php on line 27
+[26-Apr-2025 21:43:50 UTC] PHP Warning:  Undefined variable $db in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/public/index.php on line 24
+[26-Apr-2025 21:43:54 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamHistory.php:15
+Stack trace:
+#0 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php(36): DreamHistory->saveDream()
+#1 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/public/index.php(28): DreamInterpreter->interpretDream()
+#2 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamHistory.php on line 15
+[26-Apr-2025 21:45:21 UTC] PHP Warning:  Undefined variable $db in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/public/index.php on line 24
+[26-Apr-2025 21:45:25 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamHistory.php:15
+Stack trace:
+#0 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php(36): DreamHistory->saveDream()
+#1 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/public/index.php(28): DreamInterpreter->interpretDream()
+#2 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamHistory.php on line 15
+[26-Apr-2025 21:46:54 UTC] PHP Warning:  Undefined variable $db in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/public/index.php on line 35
+[26-Apr-2025 21:47:03 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamHistory.php:15
+Stack trace:
+#0 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamInterpreter.php(36): DreamHistory->saveDream()
+#1 /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/public/index.php(39): DreamInterpreter->interpretDream()
+#2 {main}
+  thrown in /home/acd1f4ftwarecom/acdisoftware.online/ruya_tabiri/src/DreamHistory.php on line 15

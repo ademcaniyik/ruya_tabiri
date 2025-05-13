@@ -1,0 +1,32 @@
+[
+    {
+        "icon": "🧘",
+        "label": "Rehberli Meditasyon",
+        "description": "Zihnini sakinleştirmen ve odaklanmanı kolaylaştıran rehberli sesler."
+    },
+    {
+        "icon": "🎶",
+        "label": "Sadece Müzik / Enstrümantal",
+        "description": "Sadece enstrümantal müzikler ile derin rahatlama sağla."
+    },
+    {
+        "icon": "🌿",
+        "label": "Doğa Sesleri",
+        "description": "Yağmur, rüzgar, okyanus gibi doğa sesleriyle rahatlayın."
+    },
+    {
+        "icon": "🌬",
+        "label": "Nefes Egzersizi Sesleri",
+        "description": "Nefes alma ve verme egzersizleriyle stresi azaltın."
+    },
+    {
+        "icon": "💫",
+        "label": "Şifa / Çakra Meditasyonları",
+        "description": "Enerji dengenizi sağlamak için çakra frekanslarına odaklanın."
+    },
+    {
+        "icon": "📖",
+        "label": "Uyku Hikâyeleri",
+        "description": "Rahatlatıcı sesle anlatılan hikayelerle uykuya dalın."
+    }
+]

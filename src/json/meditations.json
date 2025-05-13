@@ -1,0 +1,32 @@
+[
+    {
+        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "label": "Farkındalık Meditasyonu",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/json/test.mp3"
+    },
+    {
+        "image": "https://acdisoftware.online/ruya_tabiri/src/media/2.jpg",
+        "label": "Nefes Meditasyonu",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    },
+    {
+        "image": "https://acdisoftware.online/ruya_tabiri/src/media/3.jpg",
+        "label": "Sevgi Şefkat Meditasyonu",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    },
+    {
+        "image": "https://acdisoftware.online/ruya_tabiri/src/media/4.jpg",
+        "label": "Beden Taraması",
+        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+    },
+    {
+        "image": "https://acdisoftware.online/ruya_tabiri/src/media/5.avif",
+        "label": "Şifa / Çakra Meditasyonu",
+        "audio": "https://www.youtube.com/watch?v=caTE5TOY3b4&ab_channel=NefesMeditasyon"
+    },
+    {
+        "image": "https://acdisoftware.online/ruya_tabiri/src/media/6.jpg",
+        "label": "Uyku Meditasyonu",
+        "audio": "https://www.youtube.com/watch?v=zOxWPLc0j-M&ab_channel=NefesMeditasyon"
+    }
+]
