@@ -1,7 +1,7 @@
 <?php
 
 // public/index.php     
-// API'yi çağırmak için gerekli dosyaları dahil 
+// API'yi çağırmak için gerekli dosyaları dahil
 
 
 
