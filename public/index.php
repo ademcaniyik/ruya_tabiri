@@ -2,8 +2,7 @@
 
 // public/index.php 
 // Gerekli dosyaları dahil et
-//DOSAKŞDŞKADŞLASKGit deposu bulunamadı, klonlanıyor... Klonlama sonucu: fatal: destination path '.' already exists and is not an empty directory.Git klonlama hatası: 128
-//DOSAKŞDŞKADŞLASK
+
 
 require_once '../config/config.php';
 require_once '../src/ApiClient.php';
