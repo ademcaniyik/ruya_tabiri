@@ -1,6 +1,7 @@
 <?php
 
-// public/index.php 
+// public/index.php     
+// API'yi çağırmak için gerekli dosyaları dahil et
 
 
 
