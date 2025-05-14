@@ -2,7 +2,6 @@
 
 // public/index.php     
 // API'yi çağırmak için gerekli dosyaları dahil et
-// API_URL ve API_KEY gibi sabitlerin tanımlandığı config.php dosyasını dahil et
 
 
 
