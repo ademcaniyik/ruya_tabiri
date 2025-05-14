@@ -1,9 +1,7 @@
 <?php
 
 // public/index.php 
-//test
-//test
-//test
+// Gerekli dosyaları dahil et
 
 require_once '../config/config.php';
 require_once '../src/ApiClient.php';
