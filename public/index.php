@@ -1,9 +1,7 @@
 <?php
 
 // public/index.php 
-// Gerekli dosyaları dahil et
-// Gerekli dosyaları dahil et
-// Gerekli dosyaları dahil et
+
 
 
 require_once '../config/config.php';
