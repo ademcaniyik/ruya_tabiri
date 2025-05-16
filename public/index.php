@@ -1,10 +1,6 @@
 <?php
 
 // public/index.php     
-// API'yi çağırmak için gerekli dosyaları dahil
-// API'yi çağırmak için gerekli dosyaları dahil
-
-
 
 require_once '../config/config.php';
 require_once '../src/ApiClient.php';
