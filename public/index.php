@@ -1,6 +1,6 @@
 <?php
 
-
+// Rüya tabiri uygulaması için gerekli ayarları ve sınıfları dahil et
 // Rüya tabiri uygulaması için gerekli dosyaları dahil et
 
 
