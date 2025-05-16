@@ -1,9 +1,5 @@
 <?php
 
-// Rüya tabiri uygulaması için gerekli ayarları ve sınıfları dahil et
-// Rüya tabiri uygulaması için gerekli dosyaları dahil et
-
-
 require_once '../config/config.php';
 require_once '../src/ApiClient.php';
 require_once '../src/DreamInterpreter.php';
