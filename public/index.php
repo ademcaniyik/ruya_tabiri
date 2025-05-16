@@ -2,8 +2,7 @@
 
 
 // Rüya tabiri uygulaması için gerekli dosyaları dahil et
-// public/index.php     
-// config/config.php
+
 
 require_once '../config/config.php';
 require_once '../src/ApiClient.php';
