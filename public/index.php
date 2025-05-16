@@ -1,5 +1,7 @@
 <?php
 
+
+// Rüya tabiri uygulaması için gerekli dosyaları dahil et
 // public/index.php     
 
 require_once '../config/config.php';
