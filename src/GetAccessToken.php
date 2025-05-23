@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../php-jwt-main/src/JWT.php';
 require_once __DIR__ . '/../php-jwt-main/src/Key.php';
 
+
 use Firebase\JWT\JWT;
 
 function getAccessToken($serviceAccountKeyPath) {
