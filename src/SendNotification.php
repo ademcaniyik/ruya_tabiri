@@ -32,8 +32,8 @@ $notification = [
     'message' => [
         'token' => $deviceToken,
         'notification' => [
-            'title' => 'Merhaba!',
-            'body' => 'MURAT GÖTTEN VERİYOR',
+            'title' => 'Napıyon kerhaneci!',
+            'body' => 'MURAT GÖTTEN VERİYOR HIĞHIĞHIĞHIĞ',
         ],
         'data' => [
             'key1' => 'value1',
