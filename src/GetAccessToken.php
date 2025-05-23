@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../php-jwt-main/src/JWT.php';
 require_once __DIR__ . '/../php-jwt-main/src/Key.php';
-//deneme test
 
 use Firebase\JWT\JWT;
 
