@@ -2,31 +2,73 @@
     {
         "icon": "🧘",
         "label": "Rehberli Meditasyon",
-        "description": "Zihnini sakinleştirmen ve odaklanmanı kolaylaştıran rehberli sesler."
+        "description": "Zihnini sakinleştirmen ve odaklanmanı kolaylaştıran rehberli sesler.",
+        "meditation": [
+            {
+                "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+                "label": "Farkındalık Meditasyonu",
+                "audio": "https://acdisoftware.online/ruya_tabiri/src/json/test.mp3"
+            }
+        ]
     },
     {
         "icon": "🎶",
         "label": "Sadece Müzik / Enstrümantal",
-        "description": "Sadece enstrümantal müzikler ile derin rahatlama sağla."
+        "description": "Sadece enstrümantal müzikler ile derin rahatlama sağla.",
+        "meditation": [
+            {
+                "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+                "label": "Farkındalık Meditasyonu",
+                "audio": "https://acdisoftware.online/ruya_tabiri/src/json/test.mp3"
+            }
+        ]
     },
     {
         "icon": "🌿",
         "label": "Doğa Sesleri",
-        "description": "Yağmur, rüzgar, okyanus gibi doğa sesleriyle rahatlayın."
+        "description": "Yağmur, rüzgar, okyanus gibi doğa sesleriyle rahatlayın.",
+        "meditation": [
+            {
+                "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+                "label": "Farkındalık Meditasyonu",
+                "audio": "https://acdisoftware.online/ruya_tabiri/src/json/test.mp3"
+            }
+        ]
     },
     {
         "icon": "🌬",
         "label": "Nefes Egzersizi Sesleri",
-        "description": "Nefes alma ve verme egzersizleriyle stresi azaltın."
+        "description": "Nefes alma ve verme egzersizleriyle stresi azaltın.",
+        "meditation": [
+            {
+                "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+                "label": "Farkındalık Meditasyonu",
+                "audio": "https://acdisoftware.online/ruya_tabiri/src/json/test.mp3"
+            }
+        ]
     },
     {
         "icon": "💫",
         "label": "Şifa / Çakra Meditasyonları",
-        "description": "Enerji dengenizi sağlamak için çakra frekanslarına odaklanın."
+        "description": "Enerji dengenizi sağlamak için çakra frekanslarına odaklanın.",
+        "meditation": [
+            {
+                "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+                "label": "Farkındalık Meditasyonu",
+                "audio": "https://acdisoftware.online/ruya_tabiri/src/json/test.mp3"
+            }
+        ]
     },
     {
         "icon": "📖",
         "label": "Uyku Hikâyeleri",
-        "description": "Rahatlatıcı sesle anlatılan hikayelerle uykuya dalın."
+        "description": "Rahatlatıcı sesle anlatılan hikayelerle uykuya dalın.",
+        "meditation": [
+            {
+                "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+                "label": "Farkındalık Meditasyonu",
+                "audio": "https://acdisoftware.online/ruya_tabiri/src/json/test.mp3"
+            }
+        ]
     }
 ]
