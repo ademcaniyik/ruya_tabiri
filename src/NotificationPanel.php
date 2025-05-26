@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
-
+//olacak inş
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selectedTokens = isset($_POST['device_tokens']) ? $_POST['device_tokens'] : [];
