@@ -1,10 +1,13 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
-//olacak inş
-//olacak inş
+require_once __DIR__ . '/GetAccessToken.php';
+
+$serviceAccountKeyPath = __DIR__ . '/php-jwt-main/ruya-tabiri-79c05-ff951a78ed22.json';
+$accessToken = getAccessToken($serviceAccountKeyPath);
+$fcmUrl = "https://fcm.googleapis.com/v1/projects/ruya-tabiri-79c05/messages:send";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $selectedTokens = isset($_POST['device_tokens']) ? $_POST['device_tokens'] : [];
+    $selectedTokens = $_POST['device_tokens'] ?? [];
     $notificationTitle = $_POST['notification_title'] ?? '';
     $notificationBody = $_POST['notification_body'] ?? '';
 
@@ -13,11 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (empty($notificationTitle) || empty($notificationBody)) {
         echo "<p style='color: red;'>Başlık ve içerik boş olamaz.</p>";
     } else {
-        // Bildirim gönderme işlemi
-        require_once __DIR__ . '/SendNotification.php';
-
         foreach ($selectedTokens as $deviceToken) {
-            // Bildirim verisi
             $notification = [
                 'message' => [
                     'token' => $deviceToken,
@@ -97,10 +96,9 @@ $conn->close();
     </form>
 
     <script>
-        // Tüm checkboxları seçme/deseçme
         document.getElementById('select_all').addEventListener('change', function() {
             const checkboxes = document.querySelectorAll('input[name="device_tokens[]"]');
-            checkboxes.forEach(checkbox => checkbox.checked = this.checked);
+            checkboxes.forEach(cb => cb.checked = this.checked);
         });
     </script>
 </body>
