@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selectedTokens = isset($_POST['device_tokens']) ? $_POST['device_tokens'] : [];
     $notificationTitle = $_POST['notification_title'] ?? '';
