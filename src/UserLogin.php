@@ -44,7 +44,7 @@ if ($result->num_rows > 0) {
     if ($conn->query($insertUserSql) === TRUE) {
         // Yeni eklenen kullanıcının id'sini al
         $userIdInserted = $conn->insert_id;
-        
+
         // Şimdi device_tokens tablosuna cihaz token ekle
         $token = 1; // İlk token değeri
         $createdAt = date('Y-m-d H:i:s');
@@ -83,6 +83,8 @@ $conn->close();
 
 
 <?php
+/*
+DEVİCE TOKEN OLMADAN ÖNCEKİ KOD
 header('Content-Type: application/json; charset=utf-8');
 // config.php dosyasını dahil et
 include_once __DIR__ . '/../config/config.php';
@@ -160,4 +162,5 @@ echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
 // Bağlantıyı kapat
 $conn->close();
+*/
 ?>
