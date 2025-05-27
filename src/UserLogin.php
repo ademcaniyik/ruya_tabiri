@@ -62,7 +62,7 @@ $insertDeviceTokenSql = "INSERT INTO device_tokens (user_id, device_token, creat
 if ($conn->query($insertDeviceTokenSql) === TRUE && $conn->query($insertTokenSql) === TRUE) {
     $response = [
         'status' => true,
-        'message' => 'Kullanıcı, kullanıcının tokeni ve cihaz token  başarıyla kaydedildi.',
+        'message' => 'Kullanıcı, kullanıcının tokeni ve cihaz token başarıyla kaydedildi.',
         'parameters' => null
     ];
 } else {
