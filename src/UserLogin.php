@@ -23,11 +23,11 @@ $name = $conn->real_escape_string($input['name']);
 $email = $conn->real_escape_string($input['email']);
 $deviceToken = $conn->real_escape_string($input['device_token']);
 
-// // userId formatını kontrol et
-// if (!preg_match('/^\\d{1,45}$/', $userId)) {
-//     echo json_encode(['status' => false, 'message' => 'Geçersiz userId formatı.']);
-//     exit;
-// }
+// userId formatını kontrol et
+if (!preg_match('/^\\d{1,45}$/', $userId)) {
+    echo json_encode(['status' => false, 'message' => 'Geçersiz userId formatı.']);
+    exit;
+}
 
 // 1. Adım: Aynı userId ile bir kayıt var mı kontrol et
 $sql = "SELECT id FROM users WHERE userId = '$userId'";
