@@ -27,7 +27,7 @@ if (empty($userId)) {
 }
 
 // users tablosundan userId'ye göre tüm verileri al
-$sql = "SELECT * FROM users WHERE userId = '$userId'";
+$sql = "SELECT userId, `name`, email, created_at FROM users WHERE userId = '$userId'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
