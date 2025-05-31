@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
+
 // config.php dosyasını dahil et
 include_once __DIR__ . '/../config/config.php';
 
@@ -28,7 +29,6 @@ if (!preg_match('/^[\w\-\!\@\#\$\%\^\&\*\(\)\_\+\=\{\}\[\]\:\;\<\>\,\.\?\/]{1,45
     exit;
 }
 
-
 // 1. Adım: Aynı userId ile bir kayıt var mı kontrol et
 $sql = "SELECT id FROM users WHERE userId = '$userId'";
 $result = $conn->query($sql);
@@ -45,12 +45,13 @@ if ($result->num_rows > 0) {
         // Yeni eklenen kullanıcının id'sini al
         $userIdInserted = $conn->insert_id;
 
-        // Şimdi device_tokens tablosuna cihaz token ekle
+        // Şimdi tokens tablosuna token ekle
         $token = 1; // İlk token değeri
-        $createdAt = date('Y-m-d H:i:s');
-        $insertTokenSql = "INSERT INTO tokens (userId, token, created_at) VALUES ('$userId', '$token', '$createdAt')";
-
-
+        $insertTokenSql = "INSERT INTO tokens (userId, token, created_at) VALUES ('$userIdInserted', '$token', '$createdAt')";
+        if ($conn->query($insertTokenSql) !== TRUE) {
+            echo json_encode(['status' => false, 'message' => 'Kullanıcı tokeni eklenirken bir hata oluştu.']);
+            exit;
+        }
     } else {
         echo json_encode(['status' => false, 'message' => 'Kullanıcı kaydedilirken bir hata oluştu.']);
         exit;
@@ -58,8 +59,12 @@ if ($result->num_rows > 0) {
 }
 
 // 2. Adım: device_tokens tablosuna cihaz token ekle
-$insertDeviceTokenSql = "INSERT INTO device_tokens (user_id, device_token, created_at) VALUES ('$userIdInserted', '$deviceToken', '$createdAt')";
-if ($conn->query($insertDeviceTokenSql) === TRUE && $conn->query($insertTokenSql) === TRUE) {
+$createdAt = date('Y-m-d H:i:s');
+$insertDeviceTokenSql = "INSERT INTO device_tokens (user_id, device_token, created_at) 
+                         VALUES ('$userIdInserted', '$deviceToken', '$createdAt') 
+                         ON DUPLICATE KEY UPDATE created_at = '$createdAt'";
+
+if ($conn->query($insertDeviceTokenSql) === TRUE) {
     $response = [
         'status' => true,
         'message' => 'Kullanıcı, kullanıcının tokeni ve cihaz token başarıyla kaydedildi.',
@@ -68,7 +73,7 @@ if ($conn->query($insertDeviceTokenSql) === TRUE && $conn->query($insertTokenSql
 } else {
     $response = [
         'status' => false,
-        'message' => 'Cihaz token eklenirken veya kullanıcı tokeni eklenirken bir hata oluştu.',
+        'message' => 'Cihaz token eklenirken bir hata oluştu.',
         'parameters' => null
     ];
 }
@@ -79,7 +84,6 @@ echo json_encode($response, JSON_UNESCAPED_UNICODE);
 // Bağlantıyı kapat
 $conn->close();
 ?>
-
 
 
 <?php
