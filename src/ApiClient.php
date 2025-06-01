@@ -12,6 +12,7 @@ class ApiClient {
         $this->apiKey = $apiKey;
     }
 
+    
     public function sendRequest($data) {
         // cURL ile istek gönderme
         $ch = curl_init($this->apiUrl);
