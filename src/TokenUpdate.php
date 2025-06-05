@@ -1,7 +1,13 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-// config.php dosyasını dahil et
-include_once __DIR__ . '/../config/config.php';
+
+// Gerekli dosyaları dahil et
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/AuthMiddleware.php';
+
+// JWT doğrulaması yap
+$auth = new AuthMiddleware();
+$user = $auth->authenticate();
 
 // PHP saat dilimini Türkiye saati (GMT+3) olarak ayarla
 date_default_timezone_set('Europe/Istanbul');

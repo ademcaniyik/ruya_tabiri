@@ -4,6 +4,11 @@
 
 require_once '../config/config.php';
 require_once '../src/DreamHistory.php';
+require_once '../src/AuthMiddleware.php';
+
+// JWT doğrulaması yap
+$auth = new AuthMiddleware();
+$user = $auth->authenticate();
 
 // Hata raporlamayı aktif et
 error_reporting(E_ALL);

@@ -12,23 +12,29 @@ class AuthMiddleware {
     public function authenticate() {
         $token = $this->jwtAuth->getBearerToken();
 
-        if (!$token) {
-            http_response_code(401);
+        if (!$token) {            http_response_code(401);
             echo json_encode([
                 'status' => false,
-                'message' => 'Token bulunamadı',
-                'parameters' => null
+                'message' => 'Yetkilendirme hatası',
+                'parameters' => [
+                    'error' => 'Token bulunamadı',
+                    'error_code' => 'AUTH_NO_TOKEN',
+                    'status_code' => 401
+                ]
             ]);
             exit();
         }
 
         $decoded = $this->jwtAuth->validateToken($token);
-        if (!$decoded) {
-            http_response_code(401);
+        if (!$decoded) {            http_response_code(401);
             echo json_encode([
                 'status' => false,
-                'message' => 'Geçersiz token',
-                'parameters' => null
+                'message' => 'Yetkilendirme hatası',
+                'parameters' => [
+                    'error' => 'Geçersiz veya süresi dolmuş token',
+                    'error_code' => 'AUTH_INVALID_TOKEN',
+                    'status_code' => 401
+                ]
             ]);
             exit();
         }

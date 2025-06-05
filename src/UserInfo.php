@@ -1,7 +1,13 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-// config.php dosyasını dahil et
-include_once __DIR__ . '/../config/config.php';
+
+// Gerekli dosyaları dahil et
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/AuthMiddleware.php';
+
+// JWT doğrulaması yap
+$auth = new AuthMiddleware();
+$user = $auth->authenticate();
 
 // JSON verisini al
 $input = json_decode(file_get_contents("php://input"), true);
