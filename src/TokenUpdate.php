@@ -11,7 +11,7 @@ $userId = isset($_GET['userId']) && is_string($_GET['userId']) ? $conn->real_esc
 $tokenChange = isset($_GET['token']) ? intval($_GET['token']) : null;
 
 // userId sadece string olarak kabul ediliyor, aksi durumda hata döndür
-if (is_null($userId) || !ctype_alnum($userId)) {
+if (is_null($userId) ) {
     echo json_encode(['status' => false, 'message' => 'Geçersiz userId. Sadece string ve alfanümerik değerler kabul edilir.']);
     exit;
 }
