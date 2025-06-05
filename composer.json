@@ -3,6 +3,7 @@
     "description": "A PHP service to interpret dreams using ChatGPT.",
     "require": {
         "php": ">=7.4",
-        "guzzlehttp/guzzle": "^7.9"
+        "guzzlehttp/guzzle": "^7.9",
+        "firebase/php-jwt": "^6.11"
     }
 }

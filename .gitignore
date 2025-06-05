@@ -2,3 +2,4 @@ config/config.php
 src/php-jwt-main
 .env
 .env.example
+vendor/
