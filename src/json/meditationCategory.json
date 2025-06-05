@@ -5,29 +5,24 @@
     "description": "Zihnini sakinleştirmen ve odaklanmanı kolaylaştıran rehberli sesler.",
     "meditation": [
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/rehberli_sesler/1.mp4"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-2",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/rehberli_sesler/2.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-3",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/rehberli_sesler/3.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-4",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
-      },
-      {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu-5",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/rehberli_sesler/4.mp4"
       }
     ]
   },
@@ -37,29 +32,34 @@
     "description": "Sadece enstrümantal müzikler ile derin rahatlama sağla.",
     "meditation": [
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "image": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/en1.jpg",
+        "label": "Enstrümantal Meditasyon",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/enstrumental_sesler/1.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu-2",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "image": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/en1.jpg",
+        "label": "Enstrümantal Meditasyon-2",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/enstrumental_sesler/2.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "image": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/en1.jpg",
+        "label": "Enstrümantal Meditasyon-3",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/enstrumental_sesler/3.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "image": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/en1.jpg",
+        "label": "Enstrümantal Meditasyon-4",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/enstrumental_sesler/4.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "image": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/en1.jpg",
+        "label": "Enstrümantal Meditasyon-5",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/enstrumental_sesler/5.mp3"
+      },
+      {
+        "image": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/en1.jpg",
+        "label": "Enstrümantal Meditasyon-6",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/enstrumental_sesler/6.mp3"
       }
     ]
   },
@@ -69,29 +69,39 @@
     "description": "Yağmur, rüzgar, okyanus gibi doğa sesleriyle rahatlayın.",
     "meditation": [
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
+        "label": "Doğa Sesleri",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/doga_sesler/1.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu-2",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
+        "label": "Doğa Sesleri-2",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/doga_sesler/2.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu-3",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
+        "label": "Doğa Sesleri-3",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/doga_sesler/3.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu-4",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
+        "label": "Doğa Sesleri-4",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/doga_sesler/4.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu-5",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
+        "label": "Doğa Sesleri-5",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/doga_sesler/5.mp3"
+      },
+      {
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
+        "label": "Doğa Sesleri-6",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/doga_sesler/6.mp3"
+      },
+      {
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
+        "label": "Doğa Sesleri-7",
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/doga_sesler/7.mp3"
       }
     ]
   },
@@ -101,29 +111,24 @@
     "description": "Nefes alma ve verme egzersizleriyle stresi azaltın.",
     "meditation": [
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/nefes_sesler/1.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-2",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/nefes_sesler/2.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-3",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/nefes_sesler/3.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-4",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
-      },
-      {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu-5",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/nefes_sesler/4.mp3"
       }
     ]
   },
@@ -133,29 +138,24 @@
     "description": "Enerji dengenizi sağlamak için çakra frekanslarına odaklanın.",
     "meditation": [
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/sifacakra_sesler/1.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-2",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/sifacakra_sesler/2.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-3",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/sifacakra_sesler/3.mp3"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-4",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
-      },
-      {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu-5",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/sifacakra_sesler/4.mp3"
       }
     ]
   },
@@ -165,29 +165,24 @@
     "description": "Rahatlatıcı sesle anlatılan hikayelerle uykuya dalın.",
     "meditation": [
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/uyku_sesler/1.mp4"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-2",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/uyku_sesler/2.mp4"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-3",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/uyku_sesler/3.mp4"
       },
       {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
+        "image": "https://acdisoftware.online/ruya_tabiri/src/1.jpg",
         "label": "Farkındalık Meditasyonu-4",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
-      },
-      {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu-5",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/media/test.mp3"
+        "audio": "https://acdisoftware.online/ruya_tabiri/src/meditations_audio/uyku_sesler/4.mp4"
       }
     ]
   }
