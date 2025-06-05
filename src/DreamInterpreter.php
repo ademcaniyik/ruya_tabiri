@@ -1,5 +1,12 @@
 <?php
 
+// En üstte auth middleware'i ekleyelim
+require_once __DIR__ . '/AuthMiddleware.php';
+
+// JWT doğrulaması yap
+$auth = new AuthMiddleware();
+$user = $auth->authenticate();
+
 class DreamInterpreter {
 
     private $apiClient;

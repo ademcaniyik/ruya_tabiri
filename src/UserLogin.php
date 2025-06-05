@@ -66,12 +66,18 @@ $insertDeviceTokenSql = "INSERT INTO device_tokens (user_id, device_token, creat
                          VALUES ('$userIdInserted', '$deviceToken', '$createdAt') 
                          ON DUPLICATE KEY UPDATE created_at = '$createdAt'";
 
-if ($conn->query($insertDeviceTokenSql) === TRUE) {
-    $response = [
-        'status' => true,
-        'message' => 'Kullanıcı, token ve cihaz token başarıyla kaydedildi.',
-        'parameters' => null
-    ];
+if ($conn->query($insertDeviceTokenSql) === TRUE) {        // JWT token oluştur
+        require_once __DIR__ . '/JWTAuth.php';
+        $jwtAuth = new JWTAuth();
+        $jwtToken = $jwtAuth->generateToken($userIdInserted, $email);
+
+        $response = [
+            'status' => true,
+            'message' => 'Kullanıcı başarıyla kaydedildi.',
+            'parameters' => [
+                'token' => $jwtToken
+            ]
+        ];
 } else {
     $response = [
         'status' => false,
