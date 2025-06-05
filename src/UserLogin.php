@@ -15,16 +15,17 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 
 // Veritabanı bağlantısını kontrol et
 if ($conn->connect_error) {
-    echo json_encode(['status' => false, 'message' => 'Bağlantı hatası: ' . $conn->connect_error, 'parameters' => null]);
+    echo json_encode(['status' => false, 'message' => 'Veritabanı bağlantı hatası: ' . $conn->connect_error, 'parameters' => null]);
     exit;
 }
 
-// Gerekli alanlar
+// Gerekli alanları al
 $userId = $conn->real_escape_string($input['userId']);
 $name = $conn->real_escape_string($input['name']);
 $email = $conn->real_escape_string($input['email']);
 $deviceToken = $conn->real_escape_string($input['device_token']);
 
+// userId formatını kontrol et
 if (!preg_match('/^[\w\-\!\@\#\$\%\^\&\*\(\)\_\+\=\{\}\[\]\:\;\<\>\,\.\?\/]{1,45}$/', $userId)) {
     echo json_encode(['status' => false, 'message' => 'Geçersiz userId formatı.', 'parameters' => null]);
     exit;
@@ -35,7 +36,7 @@ $sql = "SELECT id FROM users WHERE userId = '$userId'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // Kullanıcı zaten var, userId'ye karşılık gelen id'yi al
+    // Kullanıcı zaten var, users.id değerini al
     $user = $result->fetch_assoc();
     $userIdInserted = $user['id'];
 } else {
@@ -45,24 +46,22 @@ if ($result->num_rows > 0) {
     if ($conn->query($insertUserSql) === TRUE) {
         // Yeni eklenen kullanıcının id'sini al
         $userIdInserted = $conn->insert_id;
+
+        // tokens tablosuna giriş ekle
+        $token = 1; // İlk token değeri
+        $insertTokenSql = "INSERT INTO tokens (userId, token, created_at) VALUES ('$userId', '$token', '$createdAt')";
+        if ($conn->query($insertTokenSql) !== TRUE) {
+            echo json_encode(['status' => false, 'message' => 'Kullanıcı tokeni eklenirken bir hata oluştu: ' . $conn->error, 'parameters' => null]);
+            exit;
+        }
     } else {
         echo json_encode(['status' => false, 'message' => 'Kullanıcı kaydedilirken bir hata oluştu: ' . $conn->error, 'parameters' => null]);
         exit;
     }
 }
 
-// 2. Adım: tokens tablosuna token ekle
-$token = 1; // İlk token değeri
+// 2. Adım: device_tokens tablosuna cihaz token ekle
 $createdAt = date('Y-m-d H:i:s');
-$insertTokenSql = "INSERT INTO tokens (userId, token, created_at) 
-                   VALUES ('$userIdInserted', '$token', '$createdAt')";
-
-if ($conn->query($insertTokenSql) !== TRUE) {
-    echo json_encode(['status' => false, 'message' => 'Kullanıcı tokeni eklenirken bir hata oluştu: ' . $conn->error, 'parameters' => null]);
-    exit;
-}
-
-// 3. Adım: device_tokens tablosuna cihaz token ekle
 $insertDeviceTokenSql = "INSERT INTO device_tokens (user_id, device_token, created_at) 
                          VALUES ('$userIdInserted', '$deviceToken', '$createdAt') 
                          ON DUPLICATE KEY UPDATE created_at = '$createdAt'";
