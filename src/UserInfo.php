@@ -38,13 +38,18 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Kullanıcı bulundu
-    $user = $result->fetch_assoc();
-
+    $user = $result->fetch_assoc();    // JWT token oluştur
+    $jwtAuth = new JWTAuth();
+    $token = $jwtAuth->generateToken($user['userId'], $user['email']);
+    
     // Yanıt oluştur
     $response = [
         'status' => true,
         'message' => 'Kullanıcı bilgileri alındı.',
-        'parameters' => $user // users tablosundaki tüm kolonlar burada yer alacak
+        'parameters' => [
+            'user' => $user,
+            'token' => $token
+        ]
     ];
 } else {
     // Kullanıcı bulunamadı
