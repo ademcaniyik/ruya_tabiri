@@ -7,7 +7,10 @@ require_once __DIR__ . '/AuthMiddleware.php';
 
 // JWT doğrulaması yap
 $auth = new AuthMiddleware();
-$user = $auth->authenticate();
+$decodedToken = $auth->authenticate();
+
+// Mevcut token'ı al
+$currentToken = $auth->jwtAuth->getBearerToken();
 
 // JSON verisini al
 $input = json_decode(file_get_contents("php://input"), true);
@@ -38,17 +41,14 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Kullanıcı bulundu
-    $user = $result->fetch_assoc();    // JWT token oluştur
-    $jwtAuth = new JWTAuth();
-    $token = $jwtAuth->generateToken($user['userId'], $user['email']);
-    
-    // Yanıt oluştur
+    $user = $result->fetch_assoc();
+      // Yanıt oluştur - mevcut token'ı response'a ekle
     $response = [
         'status' => true,
         'message' => 'Kullanıcı bilgileri alındı.',
         'parameters' => [
             'user' => $user,
-            'token' => $token
+            'token' => $currentToken // Mevcut token'ı response'a ekle
         ]
     ];
 } else {

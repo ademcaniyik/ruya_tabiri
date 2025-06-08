@@ -3,7 +3,7 @@
 require_once __DIR__ . '/JWTAuth.php';
 
 class AuthMiddleware {
-    private $jwtAuth;
+    public $jwtAuth; // Token'a erişim için public yaptık
     
     public function __construct() {
         $this->jwtAuth = new JWTAuth();
