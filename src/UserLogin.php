@@ -46,8 +46,8 @@ if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
     $userIdInserted = $user['id'];
     
-    // Eğer ek bilgiler geldiyse güncelle
-    if ($name !== null && $email !== null) {
+    // Eğer anlamlı ek bilgiler geldiyse güncelle (boş string değilse)
+    if (!empty($name) && !empty($email)) {
         $updateSql = "UPDATE users SET name = '$name', email = '$email' WHERE id = '$userIdInserted'";
         $conn->query($updateSql);
     }
