@@ -19,11 +19,17 @@ if ($conn->connect_error) {
     exit;
 }
 
-// Gerekli alanları al
+// Gerekli alanları al - sadece userId zorunlu
 $userId = $conn->real_escape_string($input['userId']);
-$name = $conn->real_escape_string($input['name']);
-$email = $conn->real_escape_string($input['email']);
-$deviceToken = $conn->real_escape_string($input['device_token']);
+
+// Diğer alanlar opsiyonel
+$name = isset($input['name']) ? $conn->real_escape_string($input['name']) : null;
+$email = isset($input['email']) ? $conn->real_escape_string($input['email']) : null;
+$deviceToken = isset($input['device_token']) ? $conn->real_escape_string($input['device_token']) : null;
+
+// JWT için gerekli
+require_once __DIR__ . '/JWTAuth.php';
+$jwtAuth = new JWTAuth();
 
 // userId formatını kontrol et
 if (!preg_match('/^[\w\-\!\@\#\$\%\^\&\*\(\)\_\+\=\{\}\[\]\:\;\<\>\,\.\?\/]{1,45}$/', $userId)) {
@@ -36,10 +42,26 @@ $sql = "SELECT id FROM users WHERE userId = '$userId'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // Kullanıcı zaten var, users.id değerini al
+    // Kullanıcı zaten var
     $user = $result->fetch_assoc();
     $userIdInserted = $user['id'];
+    
+    // Eğer ek bilgiler geldiyse güncelle
+    if ($name !== null && $email !== null) {
+        $updateSql = "UPDATE users SET name = '$name', email = '$email' WHERE id = '$userIdInserted'";
+        $conn->query($updateSql);
+    }
 } else {
+    // Sadece userId ile geldiyse hata dön
+    if ($name === null || $email === null) {
+        echo json_encode([
+            'status' => false,
+            'message' => 'Yeni kullanıcı kaydı için name ve email zorunludur.',
+            'parameters' => null
+        ]);
+        exit;
+    }
+    
     // Kullanıcı yok, yeni kayıt oluştur
     $createdAt = date('Y-m-d H:i:s');
     $insertUserSql = "INSERT INTO users (userId, name, email, created_at) VALUES ('$userId', '$name', '$email', '$createdAt')";
@@ -66,14 +88,18 @@ $insertDeviceTokenSql = "INSERT INTO device_tokens (user_id, device_token, creat
                          VALUES ('$userIdInserted', '$deviceToken', '$createdAt') 
                          ON DUPLICATE KEY UPDATE created_at = '$createdAt'";
 
-if ($conn->query($insertDeviceTokenSql) === TRUE) {        // JWT token oluştur
-        require_once __DIR__ . '/JWTAuth.php';
-        $jwtAuth = new JWTAuth();
-        $jwtToken = $jwtAuth->generateToken($userIdInserted, $email);
+if ($conn->query($insertDeviceTokenSql) === TRUE || $deviceToken === null) {
+        // Kullanıcı bilgilerini al
+        $userSql = "SELECT userId, email FROM users WHERE id = '$userIdInserted'";
+        $userResult = $conn->query($userSql);
+        $userData = $userResult->fetch_assoc();
+        
+        // JWT token oluştur
+        $jwtToken = $jwtAuth->generateToken($userData['userId'], $userData['email']);
 
         $response = [
             'status' => true,
-            'message' => 'Kullanıcı başarıyla kaydedildi.',
+            'message' => $deviceToken === null ? 'Giriş başarılı.' : 'Kullanıcı başarıyla kaydedildi.',
             'parameters' => [
                 'token' => $jwtToken
             ]

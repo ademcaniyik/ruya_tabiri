@@ -41,14 +41,12 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Kullanıcı bulundu
-    $user = $result->fetch_assoc();
-      // Yanıt oluştur - mevcut token'ı response'a ekle
+    $user = $result->fetch_assoc();    // Yanıt oluştur
     $response = [
         'status' => true,
         'message' => 'Kullanıcı bilgileri alındı.',
         'parameters' => [
-            'user' => $user,
-            'token' => $currentToken // Mevcut token'ı response'a ekle
+            'user' => $user
         ]
     ];
 } else {
