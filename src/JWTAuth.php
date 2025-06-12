@@ -36,30 +36,52 @@ class JWTAuth {
     }    public function getAuthorizationHeader() {
         $headers = null;
         
-        // Apache üzerinden gelen headerlar
-        if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
-            $headers = trim($_SERVER['HTTP_AUTHORIZATION']);
-        }
-        // Normal Authorization header
-        else if (isset($_SERVER['Authorization'])) {
-            $headers = trim($_SERVER['Authorization']);
-        }
-        // Apache_request_headers() fonksiyonu varsa
-        else if (function_exists('apache_request_headers')) {
-            $requestHeaders = apache_request_headers();
-            if (isset($requestHeaders['Authorization'])) {
-                $headers = trim($requestHeaders['Authorization']);
+        // Debug için tüm header'ları logla
+        $allHeaders = getallheaders();
+        error_log("Gelen Tüm Headers: " . print_r($allHeaders, true));
+        
+        // Tüm olası header kombinasyonlarını dene
+        $possibleHeaders = [
+            'HTTP_AUTHORIZATION',
+            'Authorization',
+            'REDIRECT_HTTP_AUTHORIZATION',
+            'HTTP_X_AUTHORIZATION',
+            'X-Authorization'
+        ];
+
+        // $_SERVER'dan kontrol
+        foreach ($possibleHeaders as $headerKey) {
+            if (isset($_SERVER[$headerKey])) {
+                $headers = trim($_SERVER[$headerKey]);
+                error_log("Header bulundu: $headerKey = $headers");
+                break;
             }
-            // Case insensitive kontrol
-            else if (isset($requestHeaders['authorization'])) {
-                $headers = trim($requestHeaders['authorization']);
+        }
+
+        // getallheaders() ile kontrol
+        if (!$headers && function_exists('getallheaders')) {
+            foreach ($allHeaders as $key => $value) {
+                if (strtolower($key) === 'authorization') {
+                    $headers = trim($value);
+                    error_log("getallheaders() ile bulundu: $headers");
+                    break;
+                }
             }
         }
-        // REDIRECT_HTTP_AUTHORIZATION kontrolü
-        else if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
-            $headers = trim($_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
+
+        // apache_request_headers() ile son kontrol
+        if (!$headers && function_exists('apache_request_headers')) {
+            $apacheHeaders = apache_request_headers();
+            foreach ($apacheHeaders as $key => $value) {
+                if (strtolower($key) === 'authorization') {
+                    $headers = trim($value);
+                    error_log("apache_request_headers() ile bulundu: $headers");
+                    break;
+                }
+            }
         }
         
+        error_log("Final Authorization Header: " . ($headers ?: 'Bulunamadı'));
         return $headers;
     }
 

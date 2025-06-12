@@ -1,6 +1,11 @@
 RewriteEngine On
+
+# Authorization header'ını forward et
 RewriteCond %{HTTP:Authorization} ^(.*)
-RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+RewriteRule .* - [env=HTTP_AUTHORIZATION:%1]
+
+# Alternatif yöntem
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 
 # CORS ayarları
 Header set Access-Control-Allow-Origin "*"
