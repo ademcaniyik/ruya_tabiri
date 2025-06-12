@@ -19,8 +19,8 @@ if (!$userId || !isset($tokenChange)) {
     exit;
 }
 
-// Kullanıcıyı kontrol et
-$sql = "SELECT token FROM users WHERE userId = ?";
+// Kullanıcının token bilgisini kontrol et
+$sql = "SELECT t.token FROM tokens t WHERE t.userId = ? ORDER BY t.created_at DESC LIMIT 1";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $userId);
 $stmt->execute();
@@ -39,12 +39,10 @@ if ($result->num_rows > 0) {
             'parameters' => null
         ]);
         exit;
-    }
-
-    // Token güncelle
-    $updateSql = "UPDATE users SET token = ?, updated_at = NOW() WHERE userId = ?";
+    }    // Token tablosuna yeni kayıt ekle
+    $updateSql = "INSERT INTO tokens (userId, token, created_at) VALUES (?, ?, NOW())";
     $updateStmt = $conn->prepare($updateSql);
-    $updateStmt->bind_param("is", $newToken, $userId);
+    $updateStmt->bind_param("si", $userId, $newToken);
     
     if ($updateStmt->execute()) {
         echo json_encode([
