@@ -1,12 +1,16 @@
 RewriteEngine On
 
-# Authorization header'ını PHP'ye ilet
-SetEnvIf Authorization "^(.*)$" HTTP_AUTHORIZATION=$1
-SetEnvIf Authorization "^(.*)$" REDIRECT_HTTP_AUTHORIZATION=$1
+# Authorization header'ını PHP'ye ilet (tüm yöntemler)
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+SetEnvIf Authorization "(.*)" REDIRECT_HTTP_AUTHORIZATION=$1
 
 # CGI/FastCGI ayarları
 RewriteCond %{HTTP:Authorization} ^(.*)
-RewriteRule .* - [e=HTTP_AUTHORIZATION:%1,e=REDIRECT_HTTP_AUTHORIZATION:%1]
+RewriteRule .* - [env=HTTP_AUTHORIZATION:%1,env=REDIRECT_HTTP_AUTHORIZATION:%1]
+
+# Authorization header'ını koru
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
 
 # cPanel özel ayarları
 CGIPassAuth On

@@ -14,6 +14,47 @@ require_once __DIR__ . '/JWTAuth.php';
 use App\AuthMiddleware;
 use App\JWTAuth;
 
+// Raw HTTP isteğini kontrol et
+$rawHeaders = apache_request_headers();
+error_log('Raw HTTP Headers: ' . print_r($rawHeaders, true));
+
+// Authorization header'ını farklı yöntemlerle kontrol et
+$authHeader = null;
+
+// 1. Apache raw headers
+if (isset($rawHeaders['Authorization'])) {
+    $authHeader = $rawHeaders['Authorization'];
+    error_log('Found in apache_request_headers()');
+}
+
+// 2. PHP $_SERVER değişkenleri
+if (!$authHeader) {
+    $possibleKeys = [
+        'HTTP_AUTHORIZATION',
+        'REDIRECT_HTTP_AUTHORIZATION',
+        'Authorization'
+    ];
+    
+    foreach ($possibleKeys as $key) {
+        if (isset($_SERVER[$key])) {
+            $authHeader = $_SERVER[$key];
+            error_log("Found in \$_SERVER[$key]");
+            break;
+        }
+    }
+}
+
+// 3. getallheaders() kontrolü
+if (!$authHeader && function_exists('getallheaders')) {
+    $headers = getallheaders();
+    if (isset($headers['Authorization'])) {
+        $authHeader = $headers['Authorization'];
+        error_log('Found in getallheaders()');
+    }
+}
+
+error_log('Final Authorization Header: ' . ($authHeader ?? 'Not found'));
+
 // Debug için header bilgilerini yazdır
 error_log('Checking raw headers from request...');
 
