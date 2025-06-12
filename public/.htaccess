@@ -1,13 +1,30 @@
 RewriteEngine On
 
-# Authorization header'ını PHP'ye ilet
+# Authorization header'ını PHP'ye ilet - tüm yöntemler deneniyor
 SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+SetEnvIf Authorization "(.*)" REDIRECT_HTTP_AUTHORIZATION=$1
+CGIPassAuth On
+
+# HTTP Authorization headerını korumak için
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
 
 # CORS için gerekli headerlar
-Header set Access-Control-Allow-Origin "*"
-Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
-Header set Access-Control-Allow-Headers "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+Header always set Access-Control-Allow-Headers "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+Header always set Access-Control-Expose-Headers "Authorization"
 
-# OPTIONS requestlerini handle et
+# Preflight OPTIONS isteklerini yanıtla
 RewriteCond %{REQUEST_METHOD} OPTIONS
 RewriteRule ^(.*)$ $1 [R=200,L]
+
+# PHP-CGI için ek ayarlar
+<IfModule mod_fcgid.c>
+    FcgidPassHeader Authorization
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+</IfModule>

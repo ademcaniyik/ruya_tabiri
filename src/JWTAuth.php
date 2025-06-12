@@ -43,54 +43,55 @@ class JWTAuth {
     }    public function getAuthorizationHeader() {
         // Debug için header bilgilerini logla
         error_log('SERVER variables: ' . print_r($_SERVER, true));
+        error_log('REQUEST headers: ' . print_r(getallheaders(), true));
         
-        // 1. Doğrudan Authorization header'ı
-        if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
-            error_log('Found HTTP_AUTHORIZATION: ' . $_SERVER['HTTP_AUTHORIZATION']);
-            return trim($_SERVER['HTTP_AUTHORIZATION']);
+        // HTTP_AUTHORIZATION headerını kontrol et (standart yöntem)
+        $auth = isset($_SERVER['HTTP_AUTHORIZATION']) ? $_SERVER['HTTP_AUTHORIZATION'] : (
+            isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) ? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] : null
+        );
+        
+        if ($auth) {
+            error_log('Found direct Authorization header: ' . $auth);
+            return trim($auth);
         }
-        
-        // 2. Apache mod_rewrite ile gelen header
-        if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
-            error_log('Found REDIRECT_HTTP_AUTHORIZATION: ' . $_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
-            return trim($_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
-        }
-        
-        // 3. Authorization header'ını özel formatta kontrol et
+
+        // CGI/FastCGI ile gelen headerları kontrol et
         if (isset($_SERVER['AUTHORIZATION'])) {
-            error_log('Found AUTHORIZATION: ' . $_SERVER['AUTHORIZATION']);
+            error_log('Found CGI Authorization: ' . $_SERVER['AUTHORIZATION']);
             return trim($_SERVER['AUTHORIZATION']);
         }
 
-        // 4. getallheaders() ile kontrol
-        if (function_exists('getallheaders')) {
-            $headers = getallheaders();
-            error_log('getallheaders(): ' . print_r($headers, true));
+        // PHP input stream'den raw headerları oku
+        if (!$auth) {
+            $requestHeaders = apache_request_headers();
+            error_log('Apache request headers: ' . print_r($requestHeaders, true));
             
-            // Case-insensitive olarak Authorization header'ını ara
-            foreach ($headers as $key => $value) {
+            foreach ($requestHeaders as $key => $value) {
                 if (strtolower($key) === 'authorization') {
-                    error_log('Found Authorization in getallheaders: ' . $value);
+                    error_log('Found Authorization in request headers: ' . $value);
                     return trim($value);
                 }
             }
         }
-        
-        // 5. apache_request_headers() ile kontrol
-        if (function_exists('apache_request_headers')) {
-            $headers = apache_request_headers();
-            error_log('apache_request_headers(): ' . print_r($headers, true));
-            
-            // Case-insensitive olarak Authorization header'ını ara
-            foreach ($headers as $key => $value) {
-                if (strtolower($key) === 'authorization') {
-                    error_log('Found Authorization in apache_request_headers: ' . $value);
-                    return trim($value);
-                }
+
+        // HTTP_ALL_HEADERS'dan kontrol et
+        if (isset($_SERVER['HTTP_ALL_HEADERS'])) {
+            $allHeaders = json_decode($_SERVER['HTTP_ALL_HEADERS'], true);
+            if (isset($allHeaders['Authorization'])) {
+                error_log('Found Authorization in ALL_HEADERS: ' . $allHeaders['Authorization']);
+                return trim($allHeaders['Authorization']);
             }
         }
-        
-        error_log('No Authorization header found');
+
+        // En son çare olarak raw input'u kontrol et
+        $headers = trim(getallheaders()['Authorization'] ?? '');
+        if ($headers) {
+            error_log('Found Authorization in raw headers: ' . $headers);
+            return trim($headers);
+        }
+
+        error_log('No Authorization header found after all attempts');
+        error_log('Available SERVER variables for debugging: ' . print_r(array_keys($_SERVER), true));
         return null;
     }
 
