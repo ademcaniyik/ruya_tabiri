@@ -41,57 +41,56 @@ class JWTAuth {
             return null;
         }
     }    public function getAuthorizationHeader() {
-        // Debug için header bilgilerini logla
-        error_log('SERVER variables: ' . print_r($_SERVER, true));
-        error_log('REQUEST headers: ' . print_r(getallheaders(), true));
-        
-        // HTTP_AUTHORIZATION headerını kontrol et (standart yöntem)
-        $auth = isset($_SERVER['HTTP_AUTHORIZATION']) ? $_SERVER['HTTP_AUTHORIZATION'] : (
-            isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) ? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] : null
-        );
-        
-        if ($auth) {
-            error_log('Found direct Authorization header: ' . $auth);
-            return trim($auth);
-        }
+        error_log('Looking for Authorization header...');
 
-        // CGI/FastCGI ile gelen headerları kontrol et
-        if (isset($_SERVER['AUTHORIZATION'])) {
-            error_log('Found CGI Authorization: ' . $_SERVER['AUTHORIZATION']);
-            return trim($_SERVER['AUTHORIZATION']);
-        }
-
-        // PHP input stream'den raw headerları oku
-        if (!$auth) {
-            $requestHeaders = apache_request_headers();
-            error_log('Apache request headers: ' . print_r($requestHeaders, true));
-            
-            foreach ($requestHeaders as $key => $value) {
-                if (strtolower($key) === 'authorization') {
-                    error_log('Found Authorization in request headers: ' . $value);
-                    return trim($value);
+        // 1. Apache CGI/FastCGI için özel kontrol
+        foreach ($_SERVER as $key => $value) {
+            error_log("Checking SERVER variable: $key");
+            if (substr($key, 0, 5) == 'HTTP_') {
+                $header = str_replace(' ', '-', ucwords(str_replace('_', ' ', strtolower(substr($key, 5)))));
+                if ($header === 'Authorization') {
+                    error_log("Found in SERVER variables: $value");
+                    return $value;
                 }
             }
         }
 
-        // HTTP_ALL_HEADERS'dan kontrol et
-        if (isset($_SERVER['HTTP_ALL_HEADERS'])) {
-            $allHeaders = json_decode($_SERVER['HTTP_ALL_HEADERS'], true);
-            if (isset($allHeaders['Authorization'])) {
-                error_log('Found Authorization in ALL_HEADERS: ' . $allHeaders['Authorization']);
-                return trim($allHeaders['Authorization']);
+        // 2. apache_request_headers() ile kontrol
+        if (function_exists('apache_request_headers')) {
+            $headers = apache_request_headers();
+            error_log('Apache headers found: ' . print_r($headers, true));
+            foreach ($headers as $key => $value) {
+                if (strtolower($key) === 'authorization') {
+                    error_log("Found in apache_request_headers: $value");
+                    return $value;
+                }
             }
         }
 
-        // En son çare olarak raw input'u kontrol et
-        $headers = trim(getallheaders()['Authorization'] ?? '');
-        if ($headers) {
-            error_log('Found Authorization in raw headers: ' . $headers);
-            return trim($headers);
+        // 3. getallheaders() ile kontrol
+        if (function_exists('getallheaders')) {
+            $headers = getallheaders();
+            error_log('PHP headers found: ' . print_r($headers, true));
+            foreach ($headers as $key => $value) {
+                if (strtolower($key) === 'authorization') {
+                    error_log("Found in getallheaders: $value");
+                    return $value;
+                }
+            }
+        }
+
+        // 4. HTTP_AUTHORIZATION veya REDIRECT_HTTP_AUTHORIZATION kontrolü
+        if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+            error_log("Found in HTTP_AUTHORIZATION: " . $_SERVER['HTTP_AUTHORIZATION']);
+            return $_SERVER['HTTP_AUTHORIZATION'];
+        }
+
+        if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+            error_log("Found in REDIRECT_HTTP_AUTHORIZATION: " . $_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
+            return $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
         }
 
         error_log('No Authorization header found after all attempts');
-        error_log('Available SERVER variables for debugging: ' . print_r(array_keys($_SERVER), true));
         return null;
     }
 

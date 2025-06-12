@@ -1,14 +1,24 @@
 RewriteEngine On
 
-# Apache mod_rewrite kuralları
-RewriteCond %{HTTP:Authorization} .
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+# Authorization header'ını PHP'ye ilet
+SetEnvIf Authorization "^(.*)$" HTTP_AUTHORIZATION=$1
+SetEnvIf Authorization "^(.*)$" REDIRECT_HTTP_AUTHORIZATION=$1
 
-# CGI/FastCGI için header ayarları
-SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+# CGI/FastCGI ayarları
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1,e=REDIRECT_HTTP_AUTHORIZATION:%1]
 
 # cPanel özel ayarları
 CGIPassAuth On
+Options +FollowSymLinks
+
+# mod_headers gerekli
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+    Header always set Access-Control-Allow-Headers "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+    Header always set Access-Control-Expose-Headers "Authorization"
+</IfModule>
 
 # Header ayarları
 Header always set Access-Control-Allow-Origin "*"

@@ -15,11 +15,32 @@ use App\AuthMiddleware;
 use App\JWTAuth;
 
 // Debug için header bilgilerini yazdır
-// Debug için - tam olarak hangi Authorization header'ı geldiğini görelim
-$authHeader = apache_request_headers()['Authorization'] ?? 'Yok';
-error_log('Gelen Authorization header: ' . $authHeader);
-error_log('Gelen headerlar: ' . print_r(getallheaders(), true));
-error_log('SERVER değişkenleri: ' . print_r($_SERVER, true));
+error_log('Checking raw headers from request...');
+
+// Apache headers
+$apache_headers = function_exists('apache_request_headers') ? apache_request_headers() : [];
+error_log('Apache headers: ' . print_r($apache_headers, true));
+
+// PHP headers
+$php_headers = function_exists('getallheaders') ? getallheaders() : [];
+error_log('PHP headers: ' . print_r($php_headers, true));
+
+// Server variables
+error_log('SERVER variables: ' . print_r($_SERVER, true));
+
+// Authorization header specific check
+$auth_header = null;
+if (isset($apache_headers['Authorization'])) {
+    $auth_header = $apache_headers['Authorization'];
+} elseif (isset($php_headers['Authorization'])) {
+    $auth_header = $php_headers['Authorization'];
+} elseif (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+    $auth_header = $_SERVER['HTTP_AUTHORIZATION'];
+} elseif (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+    $auth_header = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+}
+
+error_log('Final Authorization header found: ' . ($auth_header ?? 'Not found'));
 
 // JWT doğrulaması yap
 $auth = new AuthMiddleware();
