@@ -9,13 +9,6 @@ use App\AuthMiddleware;
 
 // JWT doğrulaması yap
 $auth = new AuthMiddleware();
-$tokenData = $auth->authenticate();
-if ($tokenData === false) {
-    exit(); // authenticate metodu zaten hata mesajını yazdırdı
-}
-
-// config.php dosyasını dahil et
-include_once __DIR__ . '/../config/config.php';
 
 // JSON verisini al
 $input = json_decode(file_get_contents("php://input"), true);
@@ -26,10 +19,17 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     exit;
 }
 
-// Veritabanı bağlantısını kontrol et
-if ($conn->connect_error) {
-    die("Bağlantı hatası: " . $conn->connect_error);
+// Bearer token'ı body'den al
+$bearerToken = isset($input['bearer_token']) ? $input['bearer_token'] : null;
+
+// Auth kontrolü
+$tokenData = $auth->authenticate($bearerToken);
+if ($tokenData === false) {
+    exit(); // authenticate metodu zaten hata mesajını yazdırdı
 }
+
+// config.php dosyasını dahil et
+include_once __DIR__ . '/../config/config.php';
 
 // Gerekli alanlar
 $userId = $conn->real_escape_string($input['userId']);

@@ -42,6 +42,9 @@ class JWTAuth {
         }
     }    public function getAuthorizationHeader() {
         error_log('Looking for Authorization header...');
+        
+        // Initialize headers array
+        $headers = [];
 
         // 1. Apache CGI/FastCGI için özel kontrol
         foreach ($_SERVER as $key => $value) {
@@ -58,11 +61,13 @@ class JWTAuth {
         // 2. apache_request_headers() ile kontrol
         if (function_exists('apache_request_headers')) {
             $headers = apache_request_headers();
-            error_log('Apache headers found: ' . print_r($headers, true));
-            foreach ($headers as $key => $value) {
-                if (strtolower($key) === 'authorization') {
-                    error_log("Found in apache_request_headers: $value");
-                    return $value;
+            if ($headers !== false) {
+                error_log('Apache headers found: ' . print_r($headers, true));
+                foreach ($headers as $key => $value) {
+                    if (strtolower($key) === 'authorization') {
+                        error_log("Found in apache_request_headers: $value");
+                        return $value;
+                    }
                 }
             }
         }
@@ -70,11 +75,13 @@ class JWTAuth {
         // 3. getallheaders() ile kontrol
         if (function_exists('getallheaders')) {
             $headers = getallheaders();
-            error_log('PHP headers found: ' . print_r($headers, true));
-            foreach ($headers as $key => $value) {
-                if (strtolower($key) === 'authorization') {
-                    error_log("Found in getallheaders: $value");
-                    return $value;
+            if ($headers !== false) {
+                error_log('PHP headers found: ' . print_r($headers, true));
+                foreach ($headers as $key => $value) {
+                    if (strtolower($key) === 'authorization') {
+                        error_log("Found in getallheaders: $value");
+                        return $value;
+                    }
                 }
             }
         }

@@ -7,19 +7,31 @@ require_once __DIR__ . '/AuthMiddleware.php';
 
 use App\AuthMiddleware;
 
+// PHP saat dilimini Türkiye saati (GMT+3) olarak ayarla
+date_default_timezone_set('Europe/Istanbul');
+
+// JSON verisini al
+$input = json_decode(file_get_contents("php://input"), true);
+
+// JSON verisi düzgün alınmazsa hata döndür
+if (json_last_error() !== JSON_ERROR_NONE) {
+    echo json_encode(['status' => false, 'message' => 'Geçersiz JSON verisi']);
+    exit;
+}
+
+// Bearer token'ı body'den al
+$bearerToken = isset($input['bearer_token']) ? $input['bearer_token'] : null;
+
 // JWT doğrulaması yap
 $auth = new AuthMiddleware();
-$tokenData = $auth->authenticate();
+$tokenData = $auth->authenticate($bearerToken);
 if (!is_array($tokenData)) {
     exit(); // authenticate metodu zaten hata mesajını yazdırdı
 }
 
-// PHP saat dilimini Türkiye saati (GMT+3) olarak ayarla
-date_default_timezone_set('Europe/Istanbul');
-
-// GET parametrelerini al
-$userId = isset($_GET['userId']) && is_string($_GET['userId']) ? $conn->real_escape_string($_GET['userId']) : null;
-$tokenChange = isset($_GET['token']) ? intval($_GET['token']) : null;
+// userId ve token değerlerini input'tan al
+$userId = isset($input['userId']) && is_string($input['userId']) ? $conn->real_escape_string($input['userId']) : null;
+$tokenChange = isset($input['token']) ? intval($input['token']) : null;
 
 // userId sadece string olarak kabul ediliyor, aksi durumda hata döndür
 if (is_null($userId) ) {

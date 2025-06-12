@@ -8,13 +8,6 @@ require_once '../src/AuthMiddleware.php';
 
 use App\AuthMiddleware;
 
-// JWT doğrulaması yap
-$auth = new AuthMiddleware();
-$tokenData = $auth->authenticate();
-if (!is_array($tokenData)) {
-    exit(); // authenticate metodu zaten hata mesajını yazdırdı
-}
-
 // Hata raporlamayı aktif et
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -29,6 +22,16 @@ try {
 
     if (json_last_error() !== JSON_ERROR_NONE) {
         throw new Exception("Geçersiz JSON verisi: " . json_last_error_msg());
+    }
+
+    // Bearer token'ı body'den al
+    $bearerToken = isset($data['bearer_token']) ? $data['bearer_token'] : null;
+
+    // JWT doğrulaması yap
+    $auth = new AuthMiddleware();
+    $tokenData = $auth->authenticate($bearerToken);
+    if (!is_array($tokenData)) {
+        exit(); // authenticate metodu zaten hata mesajını yazdırdı
     }
 
     $userId = isset($data['user_id']) ? $data['user_id'] : null;

@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . '/AuthMiddleware.php';
+use App\AuthMiddleware;
+
 class DreamInterpreter {
 
     private $apiClient;
@@ -26,7 +29,24 @@ class DreamInterpreter {
     }
 
     public function interpretDream($userId, $dreamDescription, $language = 'tr') {
-$systemMessage = "Sen bir rüya tabircisisin. Kullanıcının yazdığı her şeyin bir rüya olduğunu varsay ve bu rüyayı anlamlı bir şekilde yorumlamaya odaklan. Her bir rüyayı, bireyin iç dünyasına ışık tutan bir mesaj olarak değerlendir ve şu perspektifleri kullanarak derinlemesine analiz et:
+        // JSON verisini al
+        $input = json_decode(file_get_contents("php://input"), true);
+
+        // Bearer token'ı body'den al
+        $bearerToken = isset($input['bearer_token']) ? $input['bearer_token'] : null;
+
+        // Auth kontrolü
+        $auth = new AuthMiddleware();
+        $tokenData = $auth->authenticate($bearerToken);
+        if ($tokenData === false) {
+            return [
+                "status" => false,
+                "message" => "Yetkilendirme hatası",
+                "parameters" => []
+            ];
+        }
+
+        $systemMessage = "Sen bir rüya tabircisisin. Kullanıcının yazdığı her şeyin bir rüya olduğunu varsay ve bu rüyayı anlamlı bir şekilde yorumlamaya odaklan. Her bir rüyayı, bireyin iç dünyasına ışık tutan bir mesaj olarak değerlendir ve şu perspektifleri kullanarak derinlemesine analiz et:
 - Psikolojik: Rüyanın bilinçaltındaki mesajlarını, duygusal durumları ve olası içsel çatışmaları incele.
 - Kültürel: Kullanıcının kültürel ve sosyal bağlamını göz önünde bulundurarak evrensel sembollerin ve kişisel anlamların dengesini araştır.
 - Spiritüel: Rüyanın manevi boyutlarını keşfet ve kullanıcının hayatında pozitif bir dönüşüm yaratabilecek önerilerde bulun.
