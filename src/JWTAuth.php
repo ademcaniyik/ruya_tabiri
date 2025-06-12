@@ -1,12 +1,17 @@
 <?php
 
+namespace App;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use App\Config;
 
 class JWTAuth {
     private $secret_key;
-    private $algorithm;      public function __construct() {
+    private $algorithm;
+    
+    public function __construct() {
         require_once __DIR__ . '/../config/EnvConfig.php';
         $this->secret_key = Config::get('JWT_SECRET', 'ruya_tabiri_secret_key_2025');
         $this->algorithm = 'HS256';
@@ -14,7 +19,8 @@ class JWTAuth {
 
     public function generateToken($userId, $email) {
         $issuedAt = time();
-        $expire = $issuedAt + (60 * 60 * 24); // 24 saat geçerli
+        $expiration = Config::get('JWT_EXPIRATION', 86400); // Varsayılan: 24 saat
+        $expire = $issuedAt + $expiration;
 
         $payload = [
             'iat' => $issuedAt,
@@ -29,55 +35,48 @@ class JWTAuth {
     public function validateToken($token) {
         try {
             $decoded = JWT::decode($token, new Key($this->secret_key, $this->algorithm));
-            return $decoded;
-        } catch (Exception $e) {
-            return false;
+            return (array)$decoded;
+        } catch (\Exception $e) {
+            return null;
         }
-    }    public function getAuthorizationHeader() {
+    }
+
+    public function getAuthorizationHeader() {
         $headers = null;
-        
-        // Debug için tüm header'ları logla
-        $allHeaders = getallheaders();
-        error_log("Gelen Tüm Headers: " . print_r($allHeaders, true));
-        
-        // Tüm olası header kombinasyonlarını dene
-        $possibleHeaders = [
-            'HTTP_AUTHORIZATION',
-            'Authorization',
-            'REDIRECT_HTTP_AUTHORIZATION',
-            'HTTP_X_AUTHORIZATION',
-            'X-Authorization'
-        ];
 
-        // $_SERVER'dan kontrol
-        foreach ($possibleHeaders as $headerKey) {
-            if (isset($_SERVER[$headerKey])) {
-                $headers = trim($_SERVER[$headerKey]);
-                error_log("Header bulundu: $headerKey = $headers");
-                break;
+        // 1. Apache header
+        if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+            $headers = trim($_SERVER['HTTP_AUTHORIZATION']);
+            error_log("Header bulundu: HTTP_AUTHORIZATION");
+        }
+        // 2. Nginx header
+        elseif (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+            $headers = trim($_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
+            error_log("Header bulundu: REDIRECT_HTTP_AUTHORIZATION");
+        }
+        // 3. getallheaders() function
+        elseif (function_exists('getallheaders')) {
+            $h = getallheaders();
+            if (isset($h['Authorization'])) {
+                $headers = trim($h['Authorization']);
+                error_log("Header bulundu: getallheaders()");
             }
         }
-
-        // getallheaders() ile kontrol
-        if (!$headers && function_exists('getallheaders')) {
-            foreach ($allHeaders as $key => $value) {
-                if (strtolower($key) === 'authorization') {
-                    $headers = trim($value);
-                    error_log("getallheaders() ile bulundu: $headers");
-                    break;
-                }
+        // 4. apache_request_headers() function
+        elseif (function_exists('apache_request_headers')) {
+            $h = apache_request_headers();
+            if (isset($h['Authorization'])) {
+                $headers = trim($h['Authorization']);
+                error_log("Header bulundu: apache_request_headers()");
             }
         }
-
-        // apache_request_headers() ile son kontrol
-        if (!$headers && function_exists('apache_request_headers')) {
-            $apacheHeaders = apache_request_headers();
-            foreach ($apacheHeaders as $key => $value) {
-                if (strtolower($key) === 'authorization') {
-                    $headers = trim($value);
-                    error_log("apache_request_headers() ile bulundu: $headers");
-                    break;
-                }
+        
+        // 5. JSON request body'den kontrol (son çare)
+        if (!$headers && isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false) {
+            $input = json_decode(file_get_contents('php://input'), true);
+            if (isset($input['authorization'])) {
+                $headers = trim($input['authorization']);
+                error_log("Header bulundu: JSON body");
             }
         }
         

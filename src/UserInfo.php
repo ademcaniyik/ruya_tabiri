@@ -5,9 +5,14 @@ header('Content-Type: application/json; charset=utf-8');
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/AuthMiddleware.php';
 
+use App\AuthMiddleware;
+
 // JWT doğrulaması yap
 $auth = new AuthMiddleware();
-$decodedToken = $auth->authenticate();
+$tokenData = $auth->authenticate();
+if (!is_array($tokenData)) {
+    exit(); // authenticate metodu zaten hata mesajını yazdırdı
+}
 
 // Mevcut token'ı al
 $currentToken = $auth->jwtAuth->getBearerToken();

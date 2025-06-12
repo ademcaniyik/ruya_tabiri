@@ -6,9 +6,14 @@ require_once '../config/config.php';
 require_once '../src/DreamHistory.php';
 require_once '../src/AuthMiddleware.php';
 
+use App\AuthMiddleware;
+
 // JWT doğrulaması yap
 $auth = new AuthMiddleware();
-$user = $auth->authenticate();
+$tokenData = $auth->authenticate();
+if (!is_array($tokenData)) {
+    exit(); // authenticate metodu zaten hata mesajını yazdırdı
+}
 
 // Hata raporlamayı aktif et
 error_reporting(E_ALL);

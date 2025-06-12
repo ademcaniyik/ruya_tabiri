@@ -5,9 +5,14 @@ header('Content-Type: application/json; charset=utf-8');
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/AuthMiddleware.php';
 
+use App\AuthMiddleware;
+
 // JWT doğrulaması yap
 $auth = new AuthMiddleware();
-$user = $auth->authenticate();
+$tokenData = $auth->authenticate();
+if (!is_array($tokenData)) {
+    exit(); // authenticate metodu zaten hata mesajını yazdırdı
+}
 
 // PHP saat dilimini Türkiye saati (GMT+3) olarak ayarla
 date_default_timezone_set('Europe/Istanbul');

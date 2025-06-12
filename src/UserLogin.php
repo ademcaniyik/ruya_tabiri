@@ -20,6 +20,10 @@ if ($conn->connect_error) {
 }
 
 // Gerekli alanları al - sadece userId zorunlu
+if (!isset($input['userId'])) {
+    echo json_encode(['status' => false, 'message' => 'userId alanı gereklidir.', 'parameters' => null]);
+    exit;
+}
 $userId = $conn->real_escape_string($input['userId']);
 
 // Diğer alanlar opsiyonel
@@ -29,6 +33,7 @@ $deviceToken = isset($input['device_token']) ? $conn->real_escape_string($input[
 
 // JWT için gerekli
 require_once __DIR__ . '/JWTAuth.php';
+use App\JWTAuth;
 $jwtAuth = new JWTAuth();
 
 // userId formatını kontrol et

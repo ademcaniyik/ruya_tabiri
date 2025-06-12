@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Config {
     private static $env = [];
 
