@@ -37,22 +37,39 @@ try {
     // UserInfo için gerekli veriyi hazırla
     $userInfoData = [
         'userId' => $authResult['user_id']
-    ];
-
-    // UserInfo.php'yi çağır
+    ];    // UserInfo.php'yi çağır
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "https://acdisoftware.online/ruya_tabiri/src/UserInfo.php");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($userInfoData));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  // SSL sertifika doğrulamasını devre dışı bırak
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  // Host doğrulamasını devre dışı bırak
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);   // Yönlendirmeleri takip et
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'Content-Type: application/json',
-        'Authorization: Bearer ' . $data['bearer_token']
+        'Authorization: Bearer ' . $data['bearer_token'],
+        'Accept: application/json'
     ]);
-
-    $userInfoResponse = curl_exec($ch);
+    
+    // Debug için request headers'ı logla
+    $debug = true;  // Debug modunu açık tut
+    if ($debug) {
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+        $verbose = fopen('php://temp', 'w+');
+        curl_setopt($ch, CURLOPT_STDERR, $verbose);
+    }    $userInfoResponse = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $curlError = curl_error($ch);
+    
+    // Debug bilgilerini al
+    $debugInfo = null;
+    if ($debug) {
+        rewind($verbose);
+        $debugInfo = stream_get_contents($verbose);
+        fclose($verbose);
+    }
+    
     curl_close($ch);
 
     // Sonuçları göster
@@ -67,8 +84,8 @@ try {
             'userinfo_test' => [
                 'status' => $httpCode === 200,
                 'http_code' => $httpCode,
-                'response' => json_decode($userInfoResponse, true),
-                'curl_error' => $curlError ?: null
+                'response' => json_decode($userInfoResponse, true),                'curl_error' => $curlError ?: null,
+                'debug_info' => $debugInfo
             ]
         ]
     ]);
