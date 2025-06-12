@@ -3,12 +3,6 @@ header('Content-Type: application/json; charset=utf-8');
 
 // Gerekli dosyaları dahil et
 require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/AuthMiddleware.php';
-
-use App\AuthMiddleware;
-
-// JWT doğrulaması yap
-$auth = new AuthMiddleware();
 
 // JSON verisini al
 $input = json_decode(file_get_contents("php://input"), true);
@@ -19,22 +13,15 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     exit;
 }
 
-// Bearer token'ı body'den al
-$bearerToken = isset($input['bearer_token']) ? $input['bearer_token'] : null;
-
-// Auth kontrolü
-$tokenData = $auth->authenticate($bearerToken);
-if ($tokenData === false) {
-    exit(); // authenticate metodu zaten hata mesajını yazdırdı
+// Gerekli alanlar
+if (!isset($input['userId'])) {
+    echo json_encode(['status' => false, 'message' => 'userId parametresi gereklidir.']);
+    exit;
 }
 
-// config.php dosyasını dahil et
-include_once __DIR__ . '/../config/config.php';
-
-// Gerekli alanlar
 $userId = $conn->real_escape_string($input['userId']);
 
-// 1. Adım: Veritabanında userId ile token değerini kontrol et (tokens tablosundan)
+// Veritabanında userId ile token değerini kontrol et (tokens tablosundan)
 $sql = "SELECT t.token, t.created_at
         FROM tokens t
         WHERE t.userId = '$userId' 

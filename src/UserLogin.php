@@ -31,11 +31,6 @@ $name = isset($input['name']) ? $conn->real_escape_string($input['name']) : null
 $email = isset($input['email']) ? $conn->real_escape_string($input['email']) : null;
 $deviceToken = isset($input['device_token']) ? $conn->real_escape_string($input['device_token']) : null;
 
-// JWT için gerekli
-require_once __DIR__ . '/JWTAuth.php';
-use App\JWTAuth;
-$jwtAuth = new JWTAuth();
-
 // userId formatını kontrol et
 if (!preg_match('/^[\w\-\!\@\#\$\%\^\&\*\(\)\_\+\=\{\}\[\]\:\;\<\>\,\.\?\/]{1,45}$/', $userId)) {
     echo json_encode(['status' => false, 'message' => 'Geçersiz userId formatı.', 'parameters' => null]);
@@ -49,76 +44,66 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // Kullanıcı zaten var
     $user = $result->fetch_assoc();
-    $userIdInserted = $user['id'];
     
-    // Eğer anlamlı ek bilgiler geldiyse güncelle (boş string değilse)
-    if (!empty($name) && !empty($email)) {
-        $updateSql = "UPDATE users SET name = '$name', email = '$email' WHERE id = '$userIdInserted'";
-        $conn->query($updateSql);
+    echo json_encode([
+        'status' => true,
+        'message' => 'Giriş başarılı.',
+        'parameters' => [
+            'userId' => $userId
+        ]
+    ]);
+    exit;
+}
+
+// Yeni kullanıcı kaydı için name ve email zorunlu
+if ($name === null || $email === null) {
+    echo json_encode([
+        'status' => false,
+        'message' => 'Yeni kullanıcı kaydı için name ve email zorunludur.',
+        'parameters' => null
+    ]);
+    exit;
+}
+
+// Kullanıcı yok, yeni kayıt oluştur
+$createdAt = date('Y-m-d H:i:s');
+$insertUserSql = "INSERT INTO users (userId, name, email, created_at) VALUES ('$userId', '$name', '$email', '$createdAt')";
+if ($conn->query($insertUserSql) === TRUE) {
+    // Yeni eklenen kullanıcının id'sini al
+    $userIdInserted = $conn->insert_id;
+
+    // tokens tablosuna giriş ekle
+    $token = 1; // İlk token değeri
+    $insertTokenSql = "INSERT INTO tokens (userId, token, created_at) VALUES ('$userId', '$token', '$createdAt')";
+    if ($conn->query($insertTokenSql) !== TRUE) {
+        echo json_encode(['status' => false, 'message' => 'Kullanıcı tokeni eklenirken bir hata oluştu: ' . $conn->error, 'parameters' => null]);
+        exit;
     }
 } else {
-    // Sadece userId ile geldiyse hata dön
-    if ($name === null || $email === null) {
-        echo json_encode([
-            'status' => false,
-            'message' => 'Yeni kullanıcı kaydı için name ve email zorunludur.',
-            'parameters' => null
-        ]);
-        exit;
-    }
-    
-    // Kullanıcı yok, yeni kayıt oluştur
-    $createdAt = date('Y-m-d H:i:s');
-    $insertUserSql = "INSERT INTO users (userId, name, email, created_at) VALUES ('$userId', '$name', '$email', '$createdAt')";
-    if ($conn->query($insertUserSql) === TRUE) {
-        // Yeni eklenen kullanıcının id'sini al
-        $userIdInserted = $conn->insert_id;
-
-        // tokens tablosuna giriş ekle
-        $token = 1; // İlk token değeri
-        $insertTokenSql = "INSERT INTO tokens (userId, token, created_at) VALUES ('$userId', '$token', '$createdAt')";
-        if ($conn->query($insertTokenSql) !== TRUE) {
-            echo json_encode(['status' => false, 'message' => 'Kullanıcı tokeni eklenirken bir hata oluştu: ' . $conn->error, 'parameters' => null]);
-            exit;
-        }
-    } else {
-        echo json_encode(['status' => false, 'message' => 'Kullanıcı kaydedilirken bir hata oluştu: ' . $conn->error, 'parameters' => null]);
-        exit;
-    }
+    echo json_encode(['status' => false, 'message' => 'Kullanıcı kaydedilirken bir hata oluştu: ' . $conn->error, 'parameters' => null]);
+    exit;
 }
 
 // 2. Adım: device_tokens tablosuna cihaz token ekle
-$createdAt = date('Y-m-d H:i:s');
-$insertDeviceTokenSql = "INSERT INTO device_tokens (user_id, device_token, created_at) 
-                         VALUES ('$userIdInserted', '$deviceToken', '$createdAt') 
-                         ON DUPLICATE KEY UPDATE created_at = '$createdAt'";
+if ($deviceToken !== null) {
+    $insertDeviceTokenSql = "INSERT INTO device_tokens (user_id, device_token, created_at) 
+                            VALUES ('$userIdInserted', '$deviceToken', '$createdAt') 
+                            ON DUPLICATE KEY UPDATE created_at = '$createdAt'";
 
-if ($conn->query($insertDeviceTokenSql) === TRUE || $deviceToken === null) {
-        // Kullanıcı bilgilerini al
-        $userSql = "SELECT userId, email FROM users WHERE id = '$userIdInserted'";
-        $userResult = $conn->query($userSql);
-        $userData = $userResult->fetch_assoc();
-        
-        // JWT token oluştur
-        $jwtToken = $jwtAuth->generateToken($userData['userId'], $userData['email']);
-
-        $response = [
-            'status' => true,
-            'message' => $deviceToken === null ? 'Giriş başarılı.' : 'Kullanıcı başarıyla kaydedildi.',
-            'parameters' => [
-                'token' => $jwtToken
-            ]
-        ];
-} else {
-    $response = [
-        'status' => false,
-        'message' => 'Cihaz token eklenirken bir hata oluştu: ' . $conn->error,
-        'parameters' => null
-    ];
+    if ($conn->query($insertDeviceTokenSql) !== TRUE) {
+        echo json_encode(['status' => false, 'message' => 'Cihaz tokeni eklenirken bir hata oluştu: ' . $conn->error, 'parameters' => null]);
+        exit;
+    }
 }
 
-// JSON yanıtını döndür
-echo json_encode($response, JSON_UNESCAPED_UNICODE);
+// Başarılı yanıt döndür
+echo json_encode([
+    'status' => true,
+    'message' => $deviceToken === null ? 'Giriş başarılı.' : 'Kullanıcı başarıyla kaydedildi.',
+    'parameters' => [
+        'userId' => $userId
+    ]
+]);
 
 // Bağlantıyı kapat
 $conn->close();

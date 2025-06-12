@@ -1,8 +1,5 @@
 <?php
 
-require_once __DIR__ . '/AuthMiddleware.php';
-use App\AuthMiddleware;
-
 class DreamInterpreter {
 
     private $apiClient;
@@ -28,35 +25,55 @@ class DreamInterpreter {
         file_put_contents($this->logFile, "[$timestamp] $message" . PHP_EOL, FILE_APPEND);
     }
 
+    private function checkUserTokens($userId) {
+        // Token kontrolü
+        $sql = "SELECT token FROM tokens WHERE userId = ? ORDER BY created_at DESC LIMIT 1";
+        $stmt = $this->dreamHistory->db->prepare($sql);
+        $stmt->bind_param("s", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $tokenCount = (int)$row['token'];
+            
+            if ($tokenCount <= 0) {
+                return [
+                    "status" => false,
+                    "message" => "Yetersiz rüya yorumlama hakkı",
+                    "parameters" => [
+                        "currentToken" => $tokenCount,
+                        "required" => 1
+                    ]
+                ];
+            }
+            return ["status" => true, "tokenCount" => $tokenCount];
+        }
+        
+        return [
+            "status" => false,
+            "message" => "Kullanıcı token bilgisi bulunamadı",
+            "parameters" => null
+        ];
+    }
+
+    private function decreaseUserToken($userId) {
+        $sql = "UPDATE tokens SET token = token - 1, created_at = NOW() WHERE userId = ?";
+        $stmt = $this->dreamHistory->db->prepare($sql);
+        $stmt->bind_param("s", $userId);
+        return $stmt->execute();
+    }
+
     public function interpretDream($userId, $dreamDescription, $language = 'tr') {
-        // JSON verisini al
-        $input = json_decode(file_get_contents("php://input"), true);
-
-        // Bearer token'ı body'den al
-        $bearerToken = isset($input['bearer_token']) ? $input['bearer_token'] : null;
-
-        // Auth kontrolü
-        $auth = new AuthMiddleware();
-        $tokenData = $auth->authenticate($bearerToken);
-        if ($tokenData === false) {
-            return [
-                "status" => false,
-                "message" => "Yetkilendirme hatası",
-                "parameters" => []
-            ];
+        // Token kontrolü yap
+        $tokenCheck = $this->checkUserTokens($userId);
+        if (!$tokenCheck["status"]) {
+            return $tokenCheck;
         }
 
         $systemMessage = "Sen bir rüya tabircisisin. Kullanıcının yazdığı her şeyin bir rüya olduğunu varsay ve bu rüyayı anlamlı bir şekilde yorumlamaya odaklan. Her bir rüyayı, bireyin iç dünyasına ışık tutan bir mesaj olarak değerlendir ve şu perspektifleri kullanarak derinlemesine analiz et:
 - Psikolojik: Rüyanın bilinçaltındaki mesajlarını, duygusal durumları ve olası içsel çatışmaları incele.
-- Kültürel: Kullanıcının kültürel ve sosyal bağlamını göz önünde bulundurarak evrensel sembollerin ve kişisel anlamların dengesini araştır.
-- Spiritüel: Rüyanın manevi boyutlarını keşfet ve kullanıcının hayatında pozitif bir dönüşüm yaratabilecek önerilerde bulun.
-
-Her yorumunda:
-- Samimi, empatik ve güven veren bir arkadaş gibi davran.
-- Kullanıcıya içgörü, cesaret ve umut sunmayı hedefle.
-- Önyargılardan uzak durarak rüyayı açık fikirli ve özenli bir şekilde değerlendir.
-
-Unutma, her rüya, bireyin kendine ve yaşamına dair anlam arayışının bir yansımasıdır. Senin görevin, bu anlamı ortaya çıkararak kullanıcıya aydınlatıcı, rehberlik edici ve ilham verici bir deneyim sunmaktır.";
+- Kültürel: Kullanıcının kültürel ve sosyal bağlamını göz önünde bulundurarak evrensel sembollerin ve kişisel anlamların dengesini araştır.";
 
         $data = [
             "model" => "gpt-3.5-turbo",
@@ -81,32 +98,28 @@ Unutma, her rüya, bireyin kendine ve yaşamına dair anlam arayışının bir y
 
             if (isset($response['choices'][0]['message']['content'])) {
                 $interpretation = $response['choices'][0]['message']['content'];
-            } else {
-                $this->logError("Yanıtta 'choices[0][message][content]' eksik: " . json_encode($response));
-                return [
-                    "status" => false,
-                    "message" => "API yanıtı eksik veya beklenen formatta değil.",
-                    "parameters" => []
-                ];
+                
+                // Yorumlama başarılı olduysa token azalt
+                if (!empty($interpretation) && $this->decreaseUserToken($userId)) {
+                    $this->dreamHistory->saveDream($userId, $dreamDescription, $interpretation);
+                    return [
+                        "status" => true,
+                        "message" => "Rüya başarı ile yorumlandı.",
+                        "parameters" => [
+                            "interpretation" => $interpretation,
+                            "remainingTokens" => $tokenCheck["tokenCount"] - 1
+                        ]
+                    ];
+                }
             }
 
-            if (!empty($interpretation)) {
-                $this->dreamHistory->saveDream($userId, $dreamDescription, $interpretation);
-                return [
-                    "status" => true,
-                    "message" => "Rüya başarı ile yorumlandı.",
-                    "parameters" => [
-                        "interpretation" => $interpretation
-                    ]
-                ];
-            } else {
-                $this->logError("Boş bir yorum döndürüldü: " . json_encode($response));
-                return [
-                    "status" => false,
-                    "message" => "Rüya tabiri yapılamadı.",
-                    "parameters" => []
-                ];
-            }
+            $this->logError("Yanıtta 'choices[0][message][content]' eksik: " . json_encode($response));
+            return [
+                "status" => false,
+                "message" => "API yanıtı eksik veya beklenen formatta değil.",
+                "parameters" => []
+            ];
+
         } catch (Exception $e) {
             $this->logError("Rüya yorumlama sırasında bir hata oluştu: " . $e->getMessage());
             return [

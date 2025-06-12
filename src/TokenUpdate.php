@@ -3,9 +3,6 @@ header('Content-Type: application/json; charset=utf-8');
 
 // Gerekli dosyaları dahil et
 require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/AuthMiddleware.php';
-
-use App\AuthMiddleware;
 
 // PHP saat dilimini Türkiye saati (GMT+3) olarak ayarla
 date_default_timezone_set('Europe/Istanbul');
@@ -19,35 +16,19 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     exit;
 }
 
-// Bearer token'ı body'den al
-$bearerToken = isset($input['bearer_token']) ? $input['bearer_token'] : null;
-
-// JWT doğrulaması yap
-$auth = new AuthMiddleware();
-$tokenData = $auth->authenticate($bearerToken);
-if (!is_array($tokenData)) {
-    exit(); // authenticate metodu zaten hata mesajını yazdırdı
+// Gerekli parametreleri kontrol et
+if (!isset($input['userId']) || !isset($input['tokenChange'])) {
+    echo json_encode(['status' => false, 'message' => 'userId ve tokenChange parametreleri gereklidir.']);
+    exit;
 }
 
-// userId ve token değerlerini input'tan al
-$userId = isset($input['userId']) && is_string($input['userId']) ? $conn->real_escape_string($input['userId']) : null;
-$tokenChange = isset($input['token']) ? intval($input['token']) : null;
+$userId = $conn->real_escape_string($input['userId']);
+$tokenChange = intval($input['tokenChange']);
 
 // userId sadece string olarak kabul ediliyor, aksi durumda hata döndür
-if (is_null($userId) ) {
+if (!preg_match('/^[\w\-\!\@\#\$\%\^\&\*\(\)\_\+\=\{\}\[\]\:\;\<\>\,\.\?\/]{1,45}$/', $userId)) {
     echo json_encode(['status' => false, 'message' => 'Geçersiz userId. Sadece string ve alfanümerik değerler kabul edilir.']);
     exit;
-}
-
-// Gerekli parametrelerin eksikliği durumunda hata döndür
-if (is_null($userId) || is_null($tokenChange)) {
-    echo json_encode(['status' => false, 'message' => 'userId ve token parametreleri gereklidir.']);
-    exit;
-}
-
-// Veritabanı bağlantısını kontrol et
-if ($conn->connect_error) {
-    die("Bağlantı hatası: " . $conn->connect_error);
 }
 
 // userId ile mevcut kullanıcıyı kontrol et
@@ -82,6 +63,7 @@ if ($result->num_rows > 0) {
             'status' => true,
             'message' => 'Token başarıyla güncellendi.',
             'parameters' => [
+                'currentToken' => $currentToken,
                 'newToken' => $newToken,
                 'newCreatedAt' => date("Y-m-d H:i:s") // Güncel oluşturulma tarihi
             ]

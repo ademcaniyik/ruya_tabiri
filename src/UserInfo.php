@@ -8,11 +8,6 @@ ini_set('display_errors', 1);
 // Gerekli dosyaları dahil et
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/AuthMiddleware.php';
-require_once __DIR__ . '/JWTAuth.php';
-
-use App\AuthMiddleware;
-use App\JWTAuth;
 
 // JSON verisini al
 $input = json_decode(file_get_contents("php://input"), true);
@@ -22,22 +17,6 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     echo json_encode(['status' => false, 'message' => 'Geçersiz JSON verisi']);
     exit;
 }
-
-// Bearer token'ı body'den al
-$bearerToken = isset($input['bearer_token']) ? $input['bearer_token'] : null;
-
-// Auth kontrolü
-$auth = new AuthMiddleware();
-$tokenData = $auth->authenticate($bearerToken);
-
-if (!is_array($tokenData)) {
-    exit(); // authenticate metodu zaten hata mesajını yazdırdı
-}
-
-error_log('Token doğrulama başarılı: ' . print_r($tokenData, true));
-
-// Mevcut token'ı al
-$currentToken = $auth->jwtAuth->getBearerToken();
 
 // Veritabanı bağlantısını kontrol et
 if ($conn->connect_error) {
@@ -59,7 +38,9 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Kullanıcı bulundu
-    $user = $result->fetch_assoc();    // Yanıt oluştur
+    $user = $result->fetch_assoc();
+    
+    // Yanıt oluştur
     $response = [
         'status' => true,
         'message' => 'Kullanıcı bilgileri alındı.',
