@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Authorization header'ını PHP'ye ilet
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
+# CORS için gerekli headerlar
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+Header set Access-Control-Allow-Headers "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+
+# OPTIONS requestlerini handle et
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]

@@ -40,37 +40,57 @@ class JWTAuth {
             error_log('JWT Validation Error: ' . $e->getMessage());
             return null;
         }
-    }
-
-    public function getAuthorizationHeader() {
-        $headers = null;
-
-        // 1. Apache header
+    }    public function getAuthorizationHeader() {
+        // Debug için header bilgilerini logla
+        error_log('SERVER variables: ' . print_r($_SERVER, true));
+        
+        // 1. Doğrudan Authorization header'ı
         if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+            error_log('Found HTTP_AUTHORIZATION: ' . $_SERVER['HTTP_AUTHORIZATION']);
             return trim($_SERVER['HTTP_AUTHORIZATION']);
         }
         
-        // 2. Nginx header
+        // 2. Apache mod_rewrite ile gelen header
         if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+            error_log('Found REDIRECT_HTTP_AUTHORIZATION: ' . $_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
             return trim($_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
         }
         
-        // 3. getallheaders() function
+        // 3. Authorization header'ını özel formatta kontrol et
+        if (isset($_SERVER['AUTHORIZATION'])) {
+            error_log('Found AUTHORIZATION: ' . $_SERVER['AUTHORIZATION']);
+            return trim($_SERVER['AUTHORIZATION']);
+        }
+
+        // 4. getallheaders() ile kontrol
         if (function_exists('getallheaders')) {
-            $h = getallheaders();
-            if (isset($h['Authorization'])) {
-                return trim($h['Authorization']);
+            $headers = getallheaders();
+            error_log('getallheaders(): ' . print_r($headers, true));
+            
+            // Case-insensitive olarak Authorization header'ını ara
+            foreach ($headers as $key => $value) {
+                if (strtolower($key) === 'authorization') {
+                    error_log('Found Authorization in getallheaders: ' . $value);
+                    return trim($value);
+                }
             }
         }
         
-        // 4. apache_request_headers() function
+        // 5. apache_request_headers() ile kontrol
         if (function_exists('apache_request_headers')) {
-            $h = apache_request_headers();
-            if (isset($h['Authorization'])) {
-                return trim($h['Authorization']);
+            $headers = apache_request_headers();
+            error_log('apache_request_headers(): ' . print_r($headers, true));
+            
+            // Case-insensitive olarak Authorization header'ını ara
+            foreach ($headers as $key => $value) {
+                if (strtolower($key) === 'authorization') {
+                    error_log('Found Authorization in apache_request_headers: ' . $value);
+                    return trim($value);
+                }
             }
         }
         
+        error_log('No Authorization header found');
         return null;
     }
 
