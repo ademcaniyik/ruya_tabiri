@@ -13,9 +13,12 @@ class AuthMiddleware {
 
     /**
      * @return array|false
-     */
-    public function authenticate() {
-        $token = $this->jwtAuth->getBearerToken();
+     */    public function authenticate($token = null) {
+        // Eğer token parametre olarak gelmişse onu kullan, 
+        // gelmemişse header'dan almayı dene
+        if (!$token) {
+            $token = $this->jwtAuth->getBearerToken();
+        }
 
         if (!$token) {
             http_response_code(401);

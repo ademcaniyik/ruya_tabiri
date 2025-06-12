@@ -14,89 +14,6 @@ require_once __DIR__ . '/JWTAuth.php';
 use App\AuthMiddleware;
 use App\JWTAuth;
 
-// Raw HTTP isteğini kontrol et
-$rawHeaders = apache_request_headers();
-error_log('Raw HTTP Headers: ' . print_r($rawHeaders, true));
-
-// Authorization header'ını farklı yöntemlerle kontrol et
-$authHeader = null;
-
-// 1. Apache raw headers
-if (isset($rawHeaders['Authorization'])) {
-    $authHeader = $rawHeaders['Authorization'];
-    error_log('Found in apache_request_headers()');
-}
-
-// 2. PHP $_SERVER değişkenleri
-if (!$authHeader) {
-    $possibleKeys = [
-        'HTTP_AUTHORIZATION',
-        'REDIRECT_HTTP_AUTHORIZATION',
-        'Authorization'
-    ];
-    
-    foreach ($possibleKeys as $key) {
-        if (isset($_SERVER[$key])) {
-            $authHeader = $_SERVER[$key];
-            error_log("Found in \$_SERVER[$key]");
-            break;
-        }
-    }
-}
-
-// 3. getallheaders() kontrolü
-if (!$authHeader && function_exists('getallheaders')) {
-    $headers = getallheaders();
-    if (isset($headers['Authorization'])) {
-        $authHeader = $headers['Authorization'];
-        error_log('Found in getallheaders()');
-    }
-}
-
-error_log('Final Authorization Header: ' . ($authHeader ?? 'Not found'));
-
-// Debug için header bilgilerini yazdır
-error_log('Checking raw headers from request...');
-
-// Apache headers
-$apache_headers = function_exists('apache_request_headers') ? apache_request_headers() : [];
-error_log('Apache headers: ' . print_r($apache_headers, true));
-
-// PHP headers
-$php_headers = function_exists('getallheaders') ? getallheaders() : [];
-error_log('PHP headers: ' . print_r($php_headers, true));
-
-// Server variables
-error_log('SERVER variables: ' . print_r($_SERVER, true));
-
-// Authorization header specific check
-$auth_header = null;
-if (isset($apache_headers['Authorization'])) {
-    $auth_header = $apache_headers['Authorization'];
-} elseif (isset($php_headers['Authorization'])) {
-    $auth_header = $php_headers['Authorization'];
-} elseif (isset($_SERVER['HTTP_AUTHORIZATION'])) {
-    $auth_header = $_SERVER['HTTP_AUTHORIZATION'];
-} elseif (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
-    $auth_header = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
-}
-
-error_log('Final Authorization header found: ' . ($auth_header ?? 'Not found'));
-
-// JWT doğrulaması yap
-$auth = new AuthMiddleware();
-$tokenData = $auth->authenticate();
-
-if (!is_array($tokenData)) {
-    error_log('Token doğrulama başarısız');
-    exit(); // authenticate metodu zaten hata mesajını yazdırdı
-}
-
-error_log('Token doğrulama başarılı: ' . print_r($tokenData, true));
-
-// Mevcut token'ı al
-$currentToken = $auth->jwtAuth->getBearerToken();
-
 // JSON verisini al
 $input = json_decode(file_get_contents("php://input"), true);
 
@@ -105,6 +22,22 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     echo json_encode(['status' => false, 'message' => 'Geçersiz JSON verisi']);
     exit;
 }
+
+// Bearer token'ı body'den al
+$bearerToken = isset($input['bearer_token']) ? $input['bearer_token'] : null;
+
+// Auth kontrolü
+$auth = new AuthMiddleware();
+$tokenData = $auth->authenticate($bearerToken);
+
+if (!is_array($tokenData)) {
+    exit(); // authenticate metodu zaten hata mesajını yazdırdı
+}
+
+error_log('Token doğrulama başarılı: ' . print_r($tokenData, true));
+
+// Mevcut token'ı al
+$currentToken = $auth->jwtAuth->getBearerToken();
 
 // Veritabanı bağlantısını kontrol et
 if ($conn->connect_error) {
