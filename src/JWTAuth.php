@@ -37,6 +37,7 @@ class JWTAuth {
             $decoded = JWT::decode($token, new Key($this->secret_key, $this->algorithm));
             return (array)$decoded;
         } catch (\Exception $e) {
+            error_log('JWT Validation Error: ' . $e->getMessage());
             return null;
         }
     }
@@ -46,42 +47,31 @@ class JWTAuth {
 
         // 1. Apache header
         if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
-            $headers = trim($_SERVER['HTTP_AUTHORIZATION']);
-            error_log("Header bulundu: HTTP_AUTHORIZATION");
+            return trim($_SERVER['HTTP_AUTHORIZATION']);
         }
+        
         // 2. Nginx header
-        elseif (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
-            $headers = trim($_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
-            error_log("Header bulundu: REDIRECT_HTTP_AUTHORIZATION");
+        if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+            return trim($_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
         }
+        
         // 3. getallheaders() function
-        elseif (function_exists('getallheaders')) {
+        if (function_exists('getallheaders')) {
             $h = getallheaders();
             if (isset($h['Authorization'])) {
-                $headers = trim($h['Authorization']);
-                error_log("Header bulundu: getallheaders()");
+                return trim($h['Authorization']);
             }
         }
+        
         // 4. apache_request_headers() function
-        elseif (function_exists('apache_request_headers')) {
+        if (function_exists('apache_request_headers')) {
             $h = apache_request_headers();
             if (isset($h['Authorization'])) {
-                $headers = trim($h['Authorization']);
-                error_log("Header bulundu: apache_request_headers()");
+                return trim($h['Authorization']);
             }
         }
         
-        // 5. JSON request body'den kontrol (son çare)
-        if (!$headers && isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false) {
-            $input = json_decode(file_get_contents('php://input'), true);
-            if (isset($input['authorization'])) {
-                $headers = trim($input['authorization']);
-                error_log("Header bulundu: JSON body");
-            }
-        }
-        
-        error_log("Final Authorization Header: " . ($headers ?: 'Bulunamadı'));
-        return $headers;
+        return null;
     }
 
     public function getBearerToken() {

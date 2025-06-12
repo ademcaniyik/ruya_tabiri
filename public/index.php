@@ -38,19 +38,12 @@ try {
     }
 
     // DreamHistory nesnesini oluştur
-    $dreamHistory = new DreamHistory($conn);
-
-    // Rüya tabiri servisini başlatma
+    $dreamHistory = new DreamHistory($conn);    // Rüya tabiri servisini başlatma
     $dreamInterpreter = new DreamInterpreter(API_URL, API_KEY, $dreamHistory);
-    $interpretation = $dreamInterpreter->interpretDream($userId, $dreamDescription, $language);
-
-    echo json_encode([
-        "status" => true,
-        "message" => "Rüya başarı ile yorumlandı.",
-            'parameters' => [
-            "interpretation" => $interpretation
-            ]
-    ]);
+    $result = $dreamInterpreter->interpretDream($userId, $dreamDescription, $language);
+    
+    // DreamInterpreter sınıfı zaten uygun formatta bir yanıt döndürüyor
+    echo json_encode($result);
 
 } catch (Exception $e) {
     http_response_code(500);

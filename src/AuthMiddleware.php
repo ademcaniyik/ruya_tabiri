@@ -5,13 +5,14 @@ namespace App;
 require_once __DIR__ . '/JWTAuth.php';
 
 class AuthMiddleware {
-    public $jwtAuth; // Token'a erişim için public yaptık
-    
+    public $jwtAuth;
+
     public function __construct() {
         $this->jwtAuth = new JWTAuth();
-    }    /**
-     * JWT token'ı doğrular ve kullanıcı bilgilerini döndürür
-     * @return array|false Token geçerliyse kullanıcı bilgileri, değilse false
+    }
+
+    /**
+     * @return array|false
      */
     public function authenticate() {
         $token = $this->jwtAuth->getBearerToken();
@@ -31,8 +32,9 @@ class AuthMiddleware {
             return false;
         }
 
-        $decoded = $this->jwtAuth->validateToken($token);
-        if (!$decoded) {
+        $tokenData = $this->jwtAuth->validateToken($token);
+        
+        if ($tokenData === null) {
             http_response_code(401);
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode([
@@ -47,6 +49,6 @@ class AuthMiddleware {
             return false;
         }
 
-        return $decoded;
+        return $tokenData;
     }
 }
