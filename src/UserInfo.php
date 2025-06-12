@@ -15,6 +15,9 @@ use App\AuthMiddleware;
 use App\JWTAuth;
 
 // Debug için header bilgilerini yazdır
+// Debug için - tam olarak hangi Authorization header'ı geldiğini görelim
+$authHeader = apache_request_headers()['Authorization'] ?? 'Yok';
+error_log('Gelen Authorization header: ' . $authHeader);
 error_log('Gelen headerlar: ' . print_r(getallheaders(), true));
 error_log('SERVER değişkenleri: ' . print_r($_SERVER, true));
 
