@@ -23,45 +23,10 @@ class DreamInterpreter {
         // Zaman damgası ekleyerek log yaz
         $timestamp = date('Y-m-d H:i:s');
         file_put_contents($this->logFile, "[$timestamp] $message" . PHP_EOL, FILE_APPEND);
-    }
-
-    private function checkUserTokens($userId) {
-        // Token kontrolü
-        $sql = "SELECT token FROM tokens WHERE userId = ? ORDER BY created_at DESC LIMIT 1";
-        $stmt = $this->dreamHistory->db->prepare($sql);
-        $stmt->bind_param("s", $userId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $tokenCount = (int)$row['token'];
-            
-            if ($tokenCount <= 0) {
-                return [
-                    "status" => false,
-                    "message" => "Yetersiz rüya yorumlama hakkı",
-                    "parameters" => [
-                        "currentToken" => $tokenCount,
-                        "required" => 1
-                    ]
-                ];
-            }
-            return ["status" => true, "tokenCount" => $tokenCount];
-        }
-        
-        return [
-            "status" => false,
-            "message" => "Kullanıcı token bilgisi bulunamadı",
-            "parameters" => null
-        ];
-    }
-
-    private function decreaseUserToken($userId) {
-        $sql = "UPDATE tokens SET token = token - 1, created_at = NOW() WHERE userId = ?";
-        $stmt = $this->dreamHistory->db->prepare($sql);
-        $stmt->bind_param("s", $userId);
-        return $stmt->execute();
+    }    private function checkUserTokens($userId) {
+        return $this->dreamHistory->checkUserTokens($userId);
+    }    private function decreaseUserToken($userId) {
+        return $this->dreamHistory->decreaseUserToken($userId);
     }
 
     public function interpretDream($userId, $dreamDescription, $language = 'tr') {

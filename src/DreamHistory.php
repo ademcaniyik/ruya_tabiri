@@ -50,4 +50,43 @@ class DreamHistory {
         
         return $dreams;
     }
+
+    public function checkUserTokens($userId) {
+        // Token kontrolü
+        $sql = "SELECT token FROM tokens WHERE userId = ? ORDER BY created_at DESC LIMIT 1";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("s", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $tokenCount = (int)$row['token'];
+            
+            if ($tokenCount <= 0) {
+                return [
+                    "status" => false,
+                    "message" => "Yetersiz rüya yorumlama hakkı",
+                    "parameters" => [
+                        "currentToken" => $tokenCount,
+                        "required" => 1
+                    ]
+                ];
+            }
+            return ["status" => true, "tokenCount" => $tokenCount];
+        }
+        
+        return [
+            "status" => false,
+            "message" => "Kullanıcı token bilgisi bulunamadı",
+            "parameters" => null
+        ];
+    }
+
+    public function decreaseUserToken($userId) {
+        $sql = "UPDATE tokens SET token = token - 1, created_at = NOW() WHERE userId = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("s", $userId);
+        return $stmt->execute();
+    }
 }
