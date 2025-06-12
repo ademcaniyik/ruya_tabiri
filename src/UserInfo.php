@@ -1,18 +1,33 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
+// Debug için
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Gerekli dosyaları dahil et
+require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/AuthMiddleware.php';
+require_once __DIR__ . '/JWTAuth.php';
 
 use App\AuthMiddleware;
+use App\JWTAuth;
+
+// Debug için header bilgilerini yazdır
+error_log('Gelen headerlar: ' . print_r(getallheaders(), true));
+error_log('SERVER değişkenleri: ' . print_r($_SERVER, true));
 
 // JWT doğrulaması yap
 $auth = new AuthMiddleware();
 $tokenData = $auth->authenticate();
+
 if (!is_array($tokenData)) {
+    error_log('Token doğrulama başarısız');
     exit(); // authenticate metodu zaten hata mesajını yazdırdı
 }
+
+error_log('Token doğrulama başarılı: ' . print_r($tokenData, true));
 
 // Mevcut token'ı al
 $currentToken = $auth->jwtAuth->getBearerToken();
