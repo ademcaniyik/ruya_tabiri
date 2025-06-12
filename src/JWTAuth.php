@@ -33,21 +33,33 @@ class JWTAuth {
         } catch (Exception $e) {
             return false;
         }
-    }
-
-    public function getAuthorizationHeader() {
+    }    public function getAuthorizationHeader() {
         $headers = null;
-        if (isset($_SERVER['Authorization'])) {
-            $headers = trim($_SERVER["Authorization"]);
-        } else if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
-            $headers = trim($_SERVER["HTTP_AUTHORIZATION"]);
-        } elseif (function_exists('apache_request_headers')) {
+        
+        // Apache üzerinden gelen headerlar
+        if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+            $headers = trim($_SERVER['HTTP_AUTHORIZATION']);
+        }
+        // Normal Authorization header
+        else if (isset($_SERVER['Authorization'])) {
+            $headers = trim($_SERVER['Authorization']);
+        }
+        // Apache_request_headers() fonksiyonu varsa
+        else if (function_exists('apache_request_headers')) {
             $requestHeaders = apache_request_headers();
-            $requestHeaders = array_combine(array_map('ucwords', array_keys($requestHeaders)), array_values($requestHeaders));
             if (isset($requestHeaders['Authorization'])) {
                 $headers = trim($requestHeaders['Authorization']);
             }
+            // Case insensitive kontrol
+            else if (isset($requestHeaders['authorization'])) {
+                $headers = trim($requestHeaders['authorization']);
+            }
         }
+        // REDIRECT_HTTP_AUTHORIZATION kontrolü
+        else if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+            $headers = trim($_SERVER['REDIRECT_HTTP_AUTHORIZATION']);
+        }
+        
         return $headers;
     }
 
