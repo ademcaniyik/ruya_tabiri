@@ -1,13 +1,26 @@
 <?php
 
+require_once '../vendor/autoload.php';
 require_once '../config/config.php';
 require_once '../src/ApiClient.php';
 require_once '../src/DreamInterpreter.php';
 require_once '../src/DreamHistory.php';
+require_once '../src/AuthMiddleware.php';
+
+use App\AuthMiddleware;
 
 // Hata raporlamayı aktif et
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+// Auth kontrolü
+$auth = new AuthMiddleware();
+$authResult = $auth->authenticate();
+
+if ($authResult === false) {
+    // authenticate() metodu zaten hata mesajını gönderdi
+    exit();
+}
 
 // Yanıtın UTF-8 formatında dönebilmesi için gerekli header'ı ekle
 header('Content-Type: application/json; charset=utf-8');
