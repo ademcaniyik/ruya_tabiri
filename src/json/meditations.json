@@ -1,32 +1,189 @@
 [
-    {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/1.jpg",
-        "label": "Farkındalık Meditasyonu",
-        "audio": "https://acdisoftware.online/ruya_tabiri/src/json/test.mp3"
-    },
-    {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/2.jpg",
-        "label": "Nefes Meditasyonu",
-        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-    },
-    {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/3.jpg",
-        "label": "Sevgi Şefkat Meditasyonu",
-        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-    },
-    {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/4.jpg",
-        "label": "Beden Taraması",
-        "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
-    },
-    {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/5.avif",
-        "label": "Şifa / Çakra Meditasyonu",
-        "audio": "https://www.youtube.com/watch?v=caTE5TOY3b4&ab_channel=NefesMeditasyon"
-    },
-    {
-        "image": "https://acdisoftware.online/ruya_tabiri/src/media/6.jpg",
-        "label": "Uyku Meditasyonu",
-        "audio": "https://www.youtube.com/watch?v=zOxWPLc0j-M&ab_channel=NefesMeditasyon"
-    }
+  {
+    "icon": "ðŸ§˜",
+    "label": "Rehberli Meditasyon",
+    "description": "Zihnini sakinleÅŸtirmen ve odaklanmanÄ± kolaylaÅŸtÄ±ran rehberli sesler.",
+    "meditation": [
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/media/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/rehberli_sesler/media/1.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/media/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-2",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/rehberli_sesler/2.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/media/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-3",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/rehberli_sesler/3.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/media/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-4",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/rehberli_sesler/4.mp3"
+      }
+    ]
+  },
+  {
+    "icon": "ðŸŽ¶",
+    "label": "Sadece MÃ¼zik / EnstrÃ¼mantal",
+    "description": "Sadece enstrÃ¼mantal mÃ¼zikler ile derin rahatlama saÄŸla.",
+    "meditation": [
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/media/1.jpg",
+        "label": "EnstrÃ¼mantal Meditasyon",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/enstrumental_sesler/1.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/media/1.jpg",
+        "label": "EnstrÃ¼mantal Meditasyon-2",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/enstrumental_sesler/2.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/media/1.jpg",
+        "label": "EnstrÃ¼mantal Meditasyon-3",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/enstrumental_sesler/3.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/media/1.jpg",
+        "label": "EnstrÃ¼mantal Meditasyon-4",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/enstrumental_sesler/4.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/media/1.jpg",
+        "label": "EnstrÃ¼mantal Meditasyon-5",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/enstrumental_sesler/5.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/media/1.jpg",
+        "label": "EnstrÃ¼mantal Meditasyon-6",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/enstrumental_sesler/6.mp3"
+      }
+    ]
+  },
+  {
+    "icon": "ðŸŒ¿",
+    "label": "DoÄŸa Sesleri",
+    "description": "YaÄŸmur, rÃ¼zgar, okyanus gibi doÄŸa sesleriyle rahatlayÄ±n.",
+    "meditation": [
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "DoÄŸa Sesleri",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/doga_sesler/1.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "DoÄŸa Sesleri-2",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/doga_sesler/2.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "DoÄŸa Sesleri-3",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/doga_sesler/3.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "DoÄŸa Sesleri-4",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/doga_sesler/4.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "DoÄŸa Sesleri-5",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/doga_sesler/5.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "DoÄŸa Sesleri-6",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/doga_sesler/6.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "DoÄŸa Sesleri-7",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/doga_sesler/7.mp3"
+      }
+    ]
+  },
+  {
+    "icon": "ðŸŒ¬",
+    "label": "Nefes Egzersizi Sesleri",
+    "description": "Nefes alma ve verme egzersizleriyle stresi azaltÄ±n.",
+    "meditation": [
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/nefes_sesler/1.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-2",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/nefes_sesler/2.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-3",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/nefes_sesler/3.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-4",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/nefes_sesler/4.mp3"
+      }
+    ]
+  },
+  {
+    "icon": "ðŸ’«",
+    "label": "Åžifa / Ã‡akra MeditasyonlarÄ±",
+    "description": "Enerji dengenizi saÄŸlamak iÃ§in Ã§akra frekanslarÄ±na odaklanÄ±n.",
+    "meditation": [
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/sifacakra_sesler/1.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-2",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/sifacakra_sesler/2.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-3",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/sifacakra_sesler/3.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-4",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/sifacakra_sesler/4.mp3"
+      }
+    ]
+  },
+  {
+    "icon": "ðŸ“–",
+    "label": "Uyku HikÃ¢yeleri",
+    "description": "RahatlatÄ±cÄ± sesle anlatÄ±lan hikayelerle uykuya dalÄ±n.",
+    "meditation": [
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/uyku_sesler/1.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-2",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/uyku_sesler/2.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-3",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/uyku_sesler/3.mp3"
+      },
+      {
+        "image": "https://acdisoftware.com.tr/ruya_tabiri/src/1.jpg",
+        "label": "FarkÄ±ndalÄ±k Meditasyonu-4",
+        "audio": "https://acdisoftware.com.tr/ruya_tabiri/src/meditations_audio/uyku_sesler/4.mp3"
+      }
+    ]
+  }
 ]

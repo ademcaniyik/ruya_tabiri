@@ -1,12 +1,14 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 
+// Veritabanı bağlantısı ve diğer yapılandırmalar bu dosyadan yüklenir.
+// $conn değişkeninin bu dosya içinde tanımlanmış olduğu varsayılır.
 require_once __DIR__ . '/../config/config.php';
 
-// JSON verilerini al
+// JSON verilerini al (POST/PUT/PATCH istekleri için)
 $input = json_decode(file_get_contents("php://input"), true);
 
-// GET veya POST parametrelerini kontrol et
+// GET veya POST/JSON parametrelerini kontrol et
 $userId = $_GET['userId'] ?? $input['userId'] ?? null;
 $tokenChange = $_GET['token'] ?? $input['token'] ?? null;
 
@@ -19,7 +21,11 @@ if (!$userId || !isset($tokenChange)) {
     exit;
 }
 
-// Kullanıcının token bilgisini kontrol et
+// -------------------------------------------------------------------------
+// 1. Kullanıcının mevcut token bilgisini kontrol et (Son Kaydı Al)
+// -------------------------------------------------------------------------
+
+// Not: Bu sorgu, kullanıcının en son token değerini almak için doğru bir yaklaşımdır.
 $sql = "SELECT t.token FROM tokens t WHERE t.userId = ? ORDER BY t.created_at DESC LIMIT 1";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $userId);
@@ -36,13 +42,23 @@ if ($result->num_rows > 0) {
         echo json_encode([
             'status' => false,
             'message' => 'Token değeri negatif olamaz',
-            'parameters' => null
+            'parameters' => [
+                'current_token' => $currentToken,
+                'token_change' => (int)$tokenChange
+            ]
         ]);
         exit;
-    }    // Token tablosuna yeni kayıt ekle
-    $updateSql = "INSERT INTO tokens (userId, token, created_at) VALUES (?, ?, NOW())";
+    }
+    
+    // -------------------------------------------------------------------------
+    // 2. Token tablosundaki MEVCUT kaydı GÜNCELLE (INSERT yerine UPDATE kullanıldı)
+    // -------------------------------------------------------------------------
+    // HATA DÜZELTİLDİ: 'UPDATE ... SET ... WHERE' yapısı kullanıldı.
+    $updateSql = "UPDATE tokens SET token = ?, created_at = NOW() WHERE userId = ?";
     $updateStmt = $conn->prepare($updateSql);
-    $updateStmt->bind_param("si", $userId, $newToken);
+    
+    // Bağlama SIRASI VE TİPİ DÜZELTİLDİ: integer ($newToken) sonra string ($userId)
+    $updateStmt->bind_param("is", $newToken, $userId); 
     
     if ($updateStmt->execute()) {
         echo json_encode([
@@ -55,19 +71,26 @@ if ($result->num_rows > 0) {
             ]
         ]);
     } else {
+        // execute() başarısız olursa
         echo json_encode([
             'status' => false,
-            'message' => 'Token güncellenirken hata oluştu',
+            'message' => 'Token güncellenirken hata oluştu: ' . $updateStmt->error,
             'parameters' => null
         ]);
     }
 } else {
+    // Kullanıcı bulunamazsa
     echo json_encode([
         'status' => false,
-        'message' => 'Kullanıcı bulunamadı',
+        'message' => 'Kullanıcı bulunamadı veya hiç token kaydı yok',
         'parameters' => null
     ]);
 }
 
-$conn->close();
+// -------------------------------------------------------------------------
+// Bağlantıyı kapat
+// -------------------------------------------------------------------------
+if (isset($conn)) {
+    $conn->close();
+}
 ?>

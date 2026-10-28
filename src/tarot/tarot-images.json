@@ -1,0 +1,629 @@
+{
+  "description": "tarot cards and basic information about them, as well as references to corresponding scans, updated with Turkish names",
+  "cards": [
+    {
+      "name": "The Fool",
+      "name_tr": "Joker",
+      "number": "0",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m00.jpg"
+    },
+    {
+      "name": "The Magician",
+      "name_tr": "Büyücü",
+      "number": "1",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m01.jpg"
+    },
+    {
+      "name": "The High Priestess",
+      "name_tr": "Azize",
+      "number": "2",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m02.jpg"
+    },
+    {
+      "name": "The Empress",
+      "name_tr": "İmparatoriçe",
+      "number": "3",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m03.jpg"
+    },
+    {
+      "name": "The Emperor",
+      "name_tr": "İmparator",
+      "number": "4",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m04.jpg"
+    },
+    {
+      "name": "The Hierophant",
+      "name_tr": "Aziz",
+      "number": "5",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m05.jpg"
+    },
+    {
+      "name": "The Lovers",
+      "name_tr": "Aşıklar",
+      "number": "6",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m06.jpg"
+    },
+    {
+      "name": "The Chariot",
+      "name_tr": "Savaş Arabası",
+      "number": "7",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m07.jpg"
+    },
+    {
+      "name": "Strength",
+      "name_tr": "Güç",
+      "number": "8",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m08.jpg"
+    },
+    {
+      "name": "The Hermit",
+      "name_tr": "Ermiş",
+      "number": "9",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m09.jpg"
+    },
+    {
+      "name": "Wheel of Fortune",
+      "name_tr": "Kader Çarkı",
+      "number": "10",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m10.jpg"
+    },
+    {
+      "name": "Justice",
+      "name_tr": "Adalet",
+      "number": "11",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m11.jpg"
+    },
+    {
+      "name": "The Hanged Man",
+      "name_tr": "Asılan Adam",
+      "number": "12",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m12.jpg"
+    },
+    {
+      "name": "Death",
+      "name_tr": "Ölüm",
+      "number": "13",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m13.jpg"
+    },
+    {
+      "name": "Temperance",
+      "name_tr": "Denge",
+      "number": "14",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m14.jpg"
+    },
+    {
+      "name": "The Devil",
+      "name_tr": "Şeytan",
+      "number": "15",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m15.jpg"
+    },
+    {
+      "name": "The Tower",
+      "name_tr": "Yıkılan Kule",
+      "number": "16",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m16.jpg"
+    },
+    {
+      "name": "The Star",
+      "name_tr": "Yıldız",
+      "number": "17",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m17.jpg"
+    },
+    {
+      "name": "The Moon",
+      "name_tr": "Ay",
+      "number": "18",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m18.jpg"
+    },
+    {
+      "name": "The Sun",
+      "name_tr": "Güneş",
+      "number": "19",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m19.jpg"
+    },
+    {
+      "name": "Judgement",
+      "name_tr": "Mahkeme",
+      "number": "20",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m20.jpg"
+    },
+    {
+      "name": "The World",
+      "name_tr": "Dünya",
+      "number": "21",
+      "arcana": "Major Arcana",
+      "suit": null,
+      "img": "m21.jpg"
+    },
+    {
+      "name": "Ace of Cups",
+      "name_tr": "Kupa Ası",
+      "number": "1",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c01.jpg"
+    },
+    {
+      "name": "Two of Cups",
+      "name_tr": "Kupa İkilisi",
+      "number": "2",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c02.jpg"
+    },
+    {
+      "name": "Three of Cups",
+      "name_tr": "Kupa Üçlüsü",
+      "number": "3",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c03.jpg"
+    },
+    {
+      "name": "Four of Cups",
+      "name_tr": "Kupa Dörtlüsü",
+      "number": "4",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c04.jpg"
+    },
+    {
+      "name": "Five of Cups",
+      "name_tr": "Kupa Beşlisi",
+      "number": "5",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c05.jpg"
+    },
+    {
+      "name": "Six of Cups",
+      "name_tr": "Kupa Altılısı",
+      "number": "6",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c06.jpg"
+    },
+    {
+      "name": "Seven of Cups",
+      "name_tr": "Kupa Yedilisi",
+      "number": "7",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c07.jpg"
+    },
+    {
+      "name": "Eight of Cups",
+      "name_tr": "Kupa Sekizlisi",
+      "number": "8",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c08.jpg"
+    },
+    {
+      "name": "Nine of Cups",
+      "name_tr": "Kupa Dokuzlusu",
+      "number": "9",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c09.jpg"
+    },
+    {
+      "name": "Ten of Cups",
+      "name_tr": "Kupa Onlusu",
+      "number": "10",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c10.jpg"
+    },
+    {
+      "name": "Page of Cups",
+      "name_tr": "Kupa Prensi",
+      "number": "11",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c11.jpg"
+    },
+    {
+      "name": "Knight of Cups",
+      "name_tr": "Kupa Şövalyesi",
+      "number": "12",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c12.jpg"
+    },
+    {
+      "name": "Queen of Cups",
+      "name_tr": "Kupa Kraliçesi",
+      "number": "13",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c13.jpg"
+    },
+    {
+      "name": "King of Cups",
+      "name_tr": "Kupa Kralı",
+      "number": "14",
+      "arcana": "Minor Arcana",
+      "suit": "Cups",
+      "img": "c14.jpg"
+    },
+    {
+      "name": "Ace of Swords",
+      "name_tr": "Kılıç Ası",
+      "number": "1",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s01.jpg"
+    },
+    {
+      "name": "Two of Swords",
+      "name_tr": "Kılıç İkilisi",
+      "number": "2",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s02.jpg"
+    },
+    {
+      "name": "Three of Swords",
+      "name_tr": "Kılıç Üçlüsü",
+      "number": "3",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s03.jpg"
+    },
+    {
+      "name": "Four of Swords",
+      "name_tr": "Kılıç Dörtlüsü",
+      "number": "4",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s04.jpg"
+    },
+    {
+      "name": "Five of Swords",
+      "name_tr": "Kılıç Beşlisi",
+      "number": "5",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s05.jpg"
+    },
+    {
+      "name": "Six of Swords",
+      "name_tr": "Kılıç Altılısı",
+      "number": "6",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s06.jpg"
+    },
+    {
+      "name": "Seven of Swords",
+      "name_tr": "Kılıç Yedilisi",
+      "number": "7",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s07.jpg"
+    },
+    {
+      "name": "Eight of Swords",
+      "name_tr": "Kılıç Sekizlisi",
+      "number": "8",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s08.jpg"
+    },
+    {
+      "name": "Nine of Swords",
+      "name_tr": "Kılıç Dokuzlusu",
+      "number": "9",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s09.jpg"
+    },
+    {
+      "name": "Ten of Swords",
+      "name_tr": "Kılıç Onlusu",
+      "number": "10",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s10.jpg"
+    },
+    {
+      "name": "Page of Swords",
+      "name_tr": "Kılıç Prensi",
+      "number": "11",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s11.jpg"
+    },
+    {
+      "name": "Knight of Swords",
+      "name_tr": "Kılıç Şövalyesi",
+      "number": "12",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s12.jpg"
+    },
+    {
+      "name": "Queen of Swords",
+      "name_tr": "Kılıç Kraliçesi",
+      "number": "13",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s13.jpg"
+    },
+    {
+      "name": "King of Swords",
+      "name_tr": "Kılıç Kralı",
+      "number": "14",
+      "arcana": "Minor Arcana",
+      "suit": "Swords",
+      "img": "s14.jpg"
+    },
+    {
+      "name": "Ace of Wands",
+      "name_tr": "Değnek Ası",
+      "number": "1",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w01.jpg"
+    },
+    {
+      "name": "Two of Wands",
+      "name_tr": "Değnek İkilisi",
+      "number": "2",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w02.jpg"
+    },
+    {
+      "name": "Three of Wands",
+      "name_tr": "Değnek Üçlüsü",
+      "number": "3",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w03.jpg"
+    },
+    {
+      "name": "Four of Wands",
+      "name_tr": "Değnek Dörtlüsü",
+      "number": "4",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w04.jpg"
+    },
+    {
+      "name": "Five of Wands",
+      "name_tr": "Değnek Beşlisi",
+      "number": "5",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w05.jpg"
+    },
+    {
+      "name": "Six of Wands",
+      "name_tr": "Değnek Altılısı",
+      "number": "6",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w06.jpg"
+    },
+    {
+      "name": "Seven of Wands",
+      "name_tr": "Değnek Yedilisi",
+      "number": "7",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w07.jpg"
+    },
+    {
+      "name": "Eight of Wands",
+      "name_tr": "Değnek Sekizlisi",
+      "number": "8",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w08.jpg"
+    },
+    {
+      "name": "Nine of Wands",
+      "name_tr": "Değnek Dokuzlusu",
+      "number": "9",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w09.jpg"
+    },
+    {
+      "name": "Ten of Wands",
+      "name_tr": "Değnek Onlusu",
+      "number": "10",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w10.jpg"
+    },
+    {
+      "name": "Page of Wands",
+      "name_tr": "Değnek Prensi",
+      "number": "11",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w11.jpg"
+    },
+    {
+      "name": "Knight of Wands",
+      "name_tr": "Değnek Şövalyesi",
+      "number": "12",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w12.jpg"
+    },
+    {
+      "name": "Queen of Wands",
+      "name_tr": "Değnek Kraliçesi",
+      "number": "13",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w13.jpg"
+    },
+    {
+      "name": "King of Wands",
+      "name_tr": "Değnek Kralı",
+      "number": "14",
+      "arcana": "Minor Arcana",
+      "suit": "Wands",
+      "img": "w14.jpg"
+    },
+    {
+      "name": "Ace of Pentacles",
+      "name_tr": "Tılsım Ası",
+      "number": "1",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p01.jpg"
+    },
+    {
+      "name": "Two of Pentacles",
+      "name_tr": "Tılsım İkilisi",
+      "number": "2",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p02.jpg"
+    },
+    {
+      "name": "Three of Pentacles",
+      "name_tr": "Tılsım Üçlüsü",
+      "number": "3",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p03.jpg"
+    },
+    {
+      "name": "Four of Pentacles",
+      "name_tr": "Tılsım Dörtlüsü",
+      "number": "4",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p04.jpg"
+    },
+    {
+      "name": "Five of Pentacles",
+      "name_tr": "Tılsım Beşlisi",
+      "number": "5",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p05.jpg"
+    },
+    {
+      "name": "Six of Pentacles",
+      "name_tr": "Tılsım Altılısı",
+      "number": "6",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p06.jpg"
+    },
+    {
+      "name": "Seven of Pentacles",
+      "name_tr": "Tılsım Yedilisi",
+      "number": "7",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p07.jpg"
+    },
+    {
+      "name": "Eight of Pentacles",
+      "name_tr": "Tılsım Sekizlisi",
+      "number": "8",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p08.jpg"
+    },
+    {
+      "name": "Nine of Pentacles",
+      "name_tr": "Tılsım Dokuzlusu",
+      "number": "9",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p09.jpg"
+    },
+    {
+      "name": "Ten of Pentacles",
+      "name_tr": "Tılsım Onlusu",
+      "number": "10",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p10.jpg"
+    },
+    {
+      "name": "Page of Pentacles",
+      "name_tr": "Tılsım Prensi",
+      "number": "11",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p11.jpg"
+    },
+    {
+      "name": "Knight of Pentacles",
+      "name_tr": "Tılsım Şövalyesi",
+      "number": "12",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p12.jpg"
+    },
+    {
+      "name": "Queen of Pentacles",
+      "name_tr": "Tılsım Kraliçesi",
+      "number": "13",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p13.jpg"
+    },
+    {
+      "name": "King of Pentacles",
+      "name_tr": "Tılsım Kralı",
+      "number": "14",
+      "arcana": "Minor Arcana",
+      "suit": "Pentacles",
+      "img": "p14.jpg"
+    }
+  ]
+}

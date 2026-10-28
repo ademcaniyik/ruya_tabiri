@@ -35,6 +35,17 @@ try {
         return;
     }
 
+    // Maksimum karakter sınırı
+    $maxLength = 1500;
+    if (strlen($dreamDescription) > $maxLength) {
+        echo json_encode([
+            "status" => false,
+            "message" => "Rüya açıklamanız çok uzun. Maksimum $maxLength karakter olmalı.",
+            "parameters" => ""
+        ]);
+        return;
+    }
+
     // DreamHistory nesnesini oluştur
     $dreamHistory = new DreamHistory($conn);
     

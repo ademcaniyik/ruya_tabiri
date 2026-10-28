@@ -4,7 +4,8 @@
     "require": {
         "php": ">=7.4",
         "guzzlehttp/guzzle": "^7.9",
-        "firebase/php-jwt": "^6.11"
+        "firebase/php-jwt": "^6.11",
+        "google/apiclient": "^2.19"
     },
     "autoload": {
         "psr-4": {
