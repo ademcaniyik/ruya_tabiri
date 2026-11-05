@@ -39,43 +39,27 @@ class TarotInterpreter
         file_put_contents($this->logFile, "[$timestamp] $message" . PHP_EOL, FILE_APPEND);
     }
 
+    // Kredi, rüya yorumuyla aynı tokens tablosunda tutulur
     private function checkUserTokens($userId)
     {
-        // Check user_credits table
-        $sql = "SELECT credits FROM user_credits WHERE user_id = ?";
-        $stmt = $this->db->prepare($sql);
+        $stmt = $this->db->prepare("SELECT token FROM tokens WHERE userId = ? LIMIT 1");
         $stmt->bind_param("s", $userId);
         $stmt->execute();
-        $result = $stmt->get_result();
+        $row = $stmt->get_result()->fetch_assoc();
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $credits = (int) $row['credits'];
-
-            if ($credits <= 0) {
-                return [
-                    "status" => false,
-                    "message" => "Yetersiz Tarot kredisi.",
-                    "parameters" => [
-                        "currentCredits" => $credits,
-                        "required" => 1
-                    ]
-                ];
-            }
-            return ["status" => true, "credits" => $credits];
+        if (!$row) {
+            return ["status" => false, "message" => "Kullanıcı kredisi bulunamadı.", "parameters" => null];
         }
-
-        return [
-            "status" => false,
-            "message" => "Kullanıcı kredisi bulunamadı.",
-            "parameters" => null
-        ];
+        if ((int) $row['token'] <= 0) {
+            return ["status" => false, "message" => "Yetersiz kredi", "parameters" => ["currentToken" => 0, "required" => 1]];
+        }
+        return ["status" => true, "credits" => (int) $row['token']];
     }
 
     private function decreaseUserToken($userId)
     {
-        // Deduct from using user_credits table
-        $sql = "UPDATE user_credits SET credits = credits - 1, updated_at = NOW() WHERE user_id = ? AND credits > 0";
+        // Atomik düşüm; bakiye bitince (0) 24 saatlik yenilenme sayacı başlar (bkz. DreamHistory)
+        $sql = "UPDATE tokens SET token = token - 1, created_at = IF(token = 0, NOW(), created_at) WHERE userId = ? AND token > 0";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("s", $userId);
         return $stmt->execute() && $stmt->affected_rows > 0;
@@ -123,7 +107,7 @@ class TarotInterpreter
         }
 
         $apiData = [
-            "model" => "gpt-3.5-turbo",
+            "model" => OPENAI_MODEL,
             "messages" => [
                 ["role" => "system", "content" => $systemMessage],
                 ["role" => "user", "content" => $userPrompt]
@@ -165,12 +149,23 @@ class TarotInterpreter
 
                 // 5. Deduct Token only if successful
                 if (!empty($interpretation) && $this->decreaseUserToken($userId)) {
+                    if ($spreadType === 'single_card') {
+                        $text = is_array($interpretation) ? ($interpretation['interpretation'] ?? implode("\n\n", array_map('strval', $interpretation))) : $interpretation;
+                        $params = ["interpretation" => (string) $text];
+                    } elseif (is_array($interpretation)) {
+                        // three_card: past/present/future/summary, celtic_cross: position_1..10/summary (düz)
+                        $params = [];
+                        foreach ($interpretation as $k => $v) {
+                            $params[$k] = is_scalar($v) ? (string) $v : json_encode($v, JSON_UNESCAPED_UNICODE);
+                        }
+                    } else {
+                        // JSON çözülemedi: düz metin olarak dön
+                        $params = ["interpretation" => (string) $interpretation];
+                    }
                     return [
                         "status" => true,
                         "message" => "Tarot yorumu hazır.",
-                        "parameters" => [
-                            "interpretation" => $interpretation
-                        ]
+                        "parameters" => $params
                     ];
                 }
             }

@@ -1,6 +1,5 @@
 <?php
-require_once __DIR__ . '/php-jwt-main/src/JWT.php';
-require_once __DIR__ . '/php-jwt-main/src/Key.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Firebase\JWT\JWT;
 

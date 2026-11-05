@@ -40,8 +40,17 @@ class DreamInterpreter {
 - Psikolojik: Rüyanın bilinçaltındaki mesajlarını, duygusal durumları ve olası içsel çatışmaları incele.
 - Kültürel: Kullanıcının kültürel ve sosyal bağlamını göz önünde bulundurarak evrensel sembollerin ve kişisel anlamların dengesini araştır.";
 
+        if ($language === 'en') {
+            $systemMessage = "You are a dream interpreter. Assume everything the user writes is a dream and interpret it meaningfully. Treat each dream as a message about the person's inner world and analyze it from these perspectives:
+- Psychological: examine subconscious messages, emotional states and possible inner conflicts.
+- Cultural: balance universal symbols and personal meanings within the user's cultural and social context.
+Always answer in English.";
+        } else {
+            $systemMessage .= "\nYanıtını Türkçe ver.";
+        }
+
         $data = [
-            "model" => "gpt-3.5-turbo",
+            "model" => OPENAI_MODEL,
             "messages" => [
                 ["role" => "system", "content" => $systemMessage],
                 ["role" => "user", "content" => $dreamDescription]

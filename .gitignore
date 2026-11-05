@@ -1,5 +1,7 @@
-config/config.php
-src/php-jwt-main
 .env
-.env.example
-vendor/
+logs/
+config/service_account.json
+config/*.env
+src/php-jwt-main
+src/iap_debug.log
+public/basit_loglar.txt

@@ -1,17 +1,47 @@
 <?php
 
-require_once '../vendor/autoload.php';
-require_once '../config/config.php';
-require_once '../src/ApiClient.php';
-require_once '../src/DreamInterpreter.php';
-require_once '../src/DreamHistory.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../src/ApiClient.php';
+require_once __DIR__ . '/../src/DreamInterpreter.php';
+require_once __DIR__ . '/../src/DreamHistory.php';
 
 // Hata raporlamayı aktif et
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 // Yanıtın UTF-8 formatında dönebilmesi için gerekli header'ı ekle
 header('Content-Type: application/json; charset=utf-8');
+
+// /public/index.php/{id}: rüya silme, id yoksa yorumlama
+$deleteId = null;
+if (preg_match('#index\.php/(\d+)/?(?:\?|$)#', $_SERVER['REQUEST_URI'] ?? '', $m)) {
+    $deleteId = (int) $m[1];
+} elseif (!empty($_SERVER['PATH_INFO']) && preg_match('#^/(\d+)/?$#', $_SERVER['PATH_INFO'], $m)) {
+    $deleteId = (int) $m[1];
+}
+
+if ($deleteId !== null) {
+    // Silinen rüyanın sahibinin güncel kredisini Token.php biçiminde döndür
+    $st = $conn->prepare('SELECT user_id FROM dream_history WHERE id = ?');
+    $st->bind_param('i', $deleteId);
+    $st->execute();
+    $dream = $st->get_result()->fetch_assoc();
+    if (!$dream) {
+        json_out(false, 'Rüya bulunamadı');
+    }
+    $st = $conn->prepare('DELETE FROM dream_history WHERE id = ?');
+    $st->bind_param('i', $deleteId);
+    if (!$st->execute()) {
+        json_out(false, 'Rüya silinemedi');
+    }
+    $st = $conn->prepare('SELECT token, created_at FROM tokens WHERE userId = ? LIMIT 1');
+    $st->bind_param('s', $dream['user_id']);
+    $st->execute();
+    $tok = $st->get_result()->fetch_assoc();
+    json_out(true, 'Rüya silindi', [
+        'token' => (int) ($tok['token'] ?? 0),
+        'created_at' => (string) ($tok['created_at'] ?? date('Y-m-d H:i:s')),
+    ]);
+}
 
 try {
     // Kullanıcıdan gelen JSON isteğini alma

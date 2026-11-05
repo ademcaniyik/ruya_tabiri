@@ -2,12 +2,10 @@
 
 // public/dream_history.php
 
-require_once '../config/config.php';
-require_once '../src/DreamHistory.php';
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../src/DreamHistory.php';
 
 // Hata raporlamayı aktif et
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 // Yanıtın UTF-8 formatında dönebilmesi için gerekli header'ı ekle
 header('Content-Type: application/json; charset=utf-8');

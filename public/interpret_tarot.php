@@ -2,14 +2,12 @@
 
 // public/interpret_tarot.php
 
-require_once '../config/config.php';
-require_once '../src/ApiClient.php';
-require_once '../src/DreamHistory.php';
-require_once '../src/TarotInterpreter.php';
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../src/ApiClient.php';
+require_once __DIR__ . '/../src/DreamHistory.php';
+require_once __DIR__ . '/../src/TarotInterpreter.php';
 
 // Hata raporlamayı aktif et (Geliştirme aşamasında)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 // JSON başlığı
 header('Content-Type: application/json; charset=utf-8');

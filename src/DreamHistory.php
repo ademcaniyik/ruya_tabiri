@@ -84,9 +84,11 @@ class DreamHistory {
     }
 
     public function decreaseUserToken($userId) {
-        $sql = "UPDATE tokens SET token = token - 1, created_at = NOW() WHERE userId = ?";
+        // Atomik düşüm: bakiye 0 ise düşmez. created_at 24 saatlik yenilenme sayacıdır; MySQL SET'i
+        // soldan sağa işler, yani IF düşüşten sonraki değeri görür: bakiye bitince (0) sayaç başlar.
+        $sql = "UPDATE tokens SET token = token - 1, created_at = IF(token = 0, NOW(), created_at) WHERE userId = ? AND token > 0";
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("s", $userId);
-        return $stmt->execute();
+        return $stmt->execute() && $stmt->affected_rows > 0;
     }
 }

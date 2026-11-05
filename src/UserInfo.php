@@ -1,65 +1,25 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
-
-// Debug için
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Gerekli dosyaları dahil et
-require_once __DIR__ . '/../vendor/autoload.php';
+// Kullanıcı sorgulama. Kullanıcı yoksa status:true ve parameters olmadan döner
+// (mobil bunu "kullanıcı silinmiş" sayıp oturumu temizler).
 require_once __DIR__ . '/../config/config.php';
 
-// JSON verisini al
-$input = json_decode(file_get_contents("php://input"), true);
-
-// JSON verisi düzgün alınmazsa hata döndür
-if (json_last_error() !== JSON_ERROR_NONE) {
-    echo json_encode(['status' => false, 'message' => 'Geçersiz JSON verisi']);
-    exit;
+$input = json_decode(file_get_contents('php://input'), true);
+if (json_last_error() !== JSON_ERROR_NONE || !is_array($input)) {
+    json_out(false, 'Geçersiz JSON verisi');
 }
 
-// Veritabanı bağlantısını kontrol et
-if ($conn->connect_error) {
-    die("Bağlantı hatası: " . $conn->connect_error);
+$userId = trim((string) ($input['userId'] ?? ''));
+if ($userId === '') {
+    json_out(false, 'userId parametresi gereklidir.');
 }
 
-// Gerekli alanlar
-$userId = $conn->real_escape_string($input['userId']);
+$stmt = $conn->prepare('SELECT userId FROM users WHERE userId = ? LIMIT 1');
+$stmt->bind_param('s', $userId);
+$stmt->execute();
+$row = $stmt->get_result()->fetch_assoc();
 
-// userId parametresinin eksikliğini kontrol et
-if (empty($userId)) {
-    echo json_encode(['status' => false, 'message' => 'userId parametresi gereklidir.']);
-    exit;
+if (!$row) {
+    json_out(true, 'Kullanıcı bulunamadı');
 }
 
-// users tablosundan userId'ye göre tüm verileri al
-$sql = "SELECT userId, `name`, email, created_at FROM users WHERE userId = '$userId'";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // Kullanıcı bulundu
-    $user = $result->fetch_assoc();
-    
-    // Yanıt oluştur
-    $response = [
-        'status' => true,
-        'message' => 'Kullanıcı bilgileri alındı.',
-        'parameters' => [
-            'user' => $user
-        ]
-    ];
-} else {
-    // Kullanıcı bulunamadı
-    $response = [
-        'status' => false,
-        'message' => 'Kullanıcı bulunamadı.',
-        'parameters' => null
-    ];
-}
-
-// JSON yanıtını döndür
-echo json_encode($response, JSON_UNESCAPED_UNICODE);
-
-// Bağlantıyı kapat
-$conn->close();
-?>
+json_out(true, 'OK', ['user' => $row['userId']]);

@@ -1,29 +1,17 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-header('Content-Type: application/json; charset=UTF-8');
-mb_internal_encoding("UTF-8");
-
-$logFile = __DIR__ . '/basit_loglar.txt';
-
-$raw = file_get_contents("php://input");
-
-// UTF-8 olmayan karakterleri TEMİZLE
-$clean = mb_convert_encoding($raw, 'UTF-8', 'UTF-8');
-$clean = preg_replace('/[^\P{C}\n\r\t]/u', '', $clean); // control chars temizle
-
-$decoded = json_decode($clean, true);
-if (json_last_error() === JSON_ERROR_NONE) {
-    $log = json_encode($decoded, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-} else {
-    $log = $clean;
+// Mobil log ucu: her istekte çağrılır, hızlı ve hatasız dönmeli. Log web kökünün DIŞINDA tutulur.
+$dir = dirname(__DIR__) . '/logs';
+if (!is_dir($dir)) {
+    @mkdir($dir, 0775, true);
 }
 
-$time = date("Y-m-d H:i:s");
-$sep = str_repeat("=", 70);
-$record = "\n$sep\n[$time]\n$sep\n$log\n";
+$raw = (string) file_get_contents('php://input');
+$decoded = json_decode($raw, true);
+$text = (is_array($decoded) && isset($decoded['log'])) ? (string) $decoded['log'] : $raw;
+// Tek kayıt 20 KB ile sınırlı (kötüye kullanıma karşı)
+$text = mb_substr($text, 0, 20000, 'UTF-8');
 
-file_put_contents($logFile, $record, FILE_APPEND | LOCK_EX);
+@file_put_contents($dir . '/app_log.txt', '[' . date('Y-m-d H:i:s') . '] ' . $text . "\n" . str_repeat('-', 40) . "\n", FILE_APPEND | LOCK_EX);
 
-echo json_encode(["status" => "ok"], JSON_UNESCAPED_UNICODE);
+header('Content-Type: application/json; charset=utf-8');
+echo json_encode(['status' => true, 'message' => 'OK'], JSON_UNESCAPED_UNICODE);

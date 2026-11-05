@@ -7,6 +7,9 @@ require_once __DIR__ . '/../config/config.php';
 
 // JSON verilerini al (POST/PUT/PATCH istekleri için)
 $input = json_decode(file_get_contents("php://input"), true);
+if (!is_array($input)) {
+    $input = [];
+}
 
 // GET veya POST/JSON parametrelerini kontrol et
 $userId = $_GET['userId'] ?? $input['userId'] ?? null;
@@ -35,7 +38,17 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $currentToken = (int)$row['token'];
-    $newToken = $currentToken + (int)$tokenChange;
+    // Ödüllü reklam: yalnız küçük pozitif miktar eklenebilir (ödeme kredisi VerifyPurchase'tan gelir)
+    $tokenChange = (int)$tokenChange;
+    if ($tokenChange < 1 || $tokenChange > 5) {
+        echo json_encode([
+            'status' => false,
+            'message' => 'Geçersiz kredi miktarı',
+            'parameters' => null
+        ]);
+        exit;
+    }
+    $newToken = $currentToken + $tokenChange;
     
     // Token negatif olamaz kontrolü
     if ($newToken < 0) {
@@ -63,7 +76,7 @@ if ($result->num_rows > 0) {
     if ($updateStmt->execute()) {
         echo json_encode([
             'status' => true,
-            'message' => 'Token güncellendi',
+            'message' => 'Kredi eklendi',
             'parameters' => [
                 'userId' => $userId,
                 'newTokenValue' => $newToken,

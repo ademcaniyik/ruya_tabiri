@@ -21,6 +21,16 @@ if (json_last_error() !== JSON_ERROR_NONE || !isset($input['userId'])) {
 
 $userId = $input['userId'];
 
+// Kayıtlı olmayan kullanıcıya kredi açılmaz
+$chk = $conn->prepare("SELECT 1 FROM users WHERE userId = ? LIMIT 1");
+$chk->bind_param("s", $userId);
+$chk->execute();
+if ($chk->get_result()->num_rows === 0) {
+    echo json_encode(['status' => false, 'message' => 'Kullanıcı bulunamadı.'], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+$chk->close();
+
 // Yardımcı: UTC'yi Türkiye saatine çevir
 function get_local_time_string($utcDate = null) {
     $dt = $utcDate 

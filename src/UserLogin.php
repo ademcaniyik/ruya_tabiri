@@ -23,7 +23,7 @@ function writeLog($message)
 writeLog("=== Yeni istek alındı ===");
 
 // config.php dosyasını dahil et
-include_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../config/config.php';
 
 // JSON verisini al
 $rawInput = file_get_contents("php://input");
@@ -124,6 +124,14 @@ if ($result->num_rows > 0) {
     exit;
 }
 
+// Kullanıcı yok: yalnız userId geldiyse (yeniden giriş) 401 dön, mobil A isteğiyle kayıt olur
+if ($name === null && $email === null) {
+    writeLog("Kullanıcı bulunamadı, name/email yok: 401");
+    http_response_code(401);
+    echo json_encode(['status' => false, 'message' => 'Kullanıcı bulunamadı', 'parameters' => null]);
+    exit;
+}
+
 // Yeni kullanıcı oluştur
 $insertUserSql = "INSERT INTO users (userId, name, email, created_at) VALUES ('$userId', " .
     ($name ? "'$name'" : "NULL") . ", " .
@@ -134,7 +142,7 @@ if ($conn->query($insertUserSql) === TRUE) {
     writeLog("Yeni kullanıcı oluşturuldu: ID=$userIdInserted, userId=$userId");
 
     // Token ekle
-    $token = 1;
+    $token = INITIAL_CREDITS;
     $insertTokenSql = "INSERT INTO tokens (userId, token, created_at) VALUES ('$userId', '$token', '$createdAt')";
     if ($conn->query($insertTokenSql) !== TRUE) {
         $errorMsg = 'Kullanıcı tokeni eklenirken hata: ' . $conn->error;
